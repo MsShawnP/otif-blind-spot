@@ -1,0 +1,214 @@
+.audit-sheet-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.audit-sheet-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.audit-sheet-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.3;
+}
+
+.audit-sheet-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+/* ─── Filter bar ─────────────────────────────────────────────────────────── */
+
+.audit-filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.audit-filter-btn {
+  padding: 6px 14px;
+  background: none;
+  border: 1px solid var(--color-gridline);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  transition: border-color 150ms, color 150ms;
+}
+
+.audit-filter-btn:hover {
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+}
+
+.audit-filter-btn--active {
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+  font-weight: 600;
+  background-color: var(--color-info-bg);
+}
+
+.audit-filter-btn:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}
+
+/* ─── Table ──────────────────────────────────────────────────────────────── */
+
+.audit-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-gridline);
+  border-radius: var(--border-radius);
+}
+
+.audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-text-primary);
+}
+
+.audit-th {
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  background-color: var(--color-canvas);
+  border-bottom: 1px solid var(--color-gridline);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.audit-th--sortable {
+  cursor: pointer;
+}
+
+.audit-th--sortable:hover {
+  color: var(--color-text-primary);
+}
+
+.audit-th--sorted {
+  color: var(--color-ink);
+}
+
+.sort-chevron {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+.audit-td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-gridline);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.audit-row:last-child .audit-td {
+  border-bottom: none;
+}
+
+/* Failure row highlighting */
+.audit-row--single-fail {
+  border-left: 3px solid var(--color-red);
+}
+
+.audit-row--single-fail .audit-td:first-child {
+  padding-left: 9px;
+}
+
+.audit-row--both-fail {
+  border-left: 4px solid var(--color-red);
+  background-color: var(--color-fail-bg);
+}
+
+.audit-row--both-fail .audit-td:first-child {
+  padding-left: 8px;
+}
+
+/* ─── Result chip ────────────────────────────────────────────────────────── */
+
+.result-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--border-radius);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.result-chip--pass {
+  background-color: var(--color-pass-bg);
+  color: var(--color-pass-text);
+}
+
+.result-chip--fail {
+  background-color: var(--color-fail-bg);
+  color: var(--color-fail-text);
+}
+
+/* ─── Empty state ─────────────────────────────────────────────────────────── */
+
+.audit-empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* ─── Pagination ──────────────────────────────────────────────────────────── */
+
+.audit-pagination {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.audit-page-btn {
+  padding: 6px 16px;
+  background: var(--color-navy);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 150ms;
+}
+
+.audit-page-btn:hover:not(:disabled) {
+  background-color: var(--color-navy-hover);
+}
+
+.audit-page-btn:disabled {
+  background-color: var(--color-disabled);
+  cursor: default;
+}
+
+.audit-page-info {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+@media print {
+  .audit-filter-bar,
+  .audit-pagination {
+    display: none;
+  }
+}
