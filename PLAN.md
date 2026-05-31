@@ -33,7 +33,7 @@ deferred to a polish phase.
 
 - [x] Run /clarify to scope the work
 - [x] Run /ce:brainstorm to write the spec
-- [ ] Run /ce:plan to research and plan implementation
+- [x] Run /ce:plan to research and plan implementation
 
 ## Analytical moves (all in scope)
 
