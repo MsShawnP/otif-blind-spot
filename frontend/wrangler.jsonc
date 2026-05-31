@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "otif-blind-spot",
+  "account_id": "255b82c4e2881dcc405aa2a85ef56fbb",
   "compatibility_date": "2026-05-31",
   "observability": {
     "enabled": true
