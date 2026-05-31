@@ -49,3 +49,15 @@ about synthetic Walmart scorecard data remains open).
 **Next:** Before /ce:work — resolve 3 P1 plan decisions: (1) add R10 override note in U2 for src/data path, (2) add R12/Key Decisions override note for Observable Plot, (3) define velocity damage formula in otif_config.py. Then start U2 (data generation pipeline).
 
 ---
+
+## 2026-05-31 17:41
+
+**What changed:** /ce:work complete — all 7 implementation units shipped (51 tests, build passing, pushed).
+
+**Why:** Full portfolio piece built end-to-end: React/TS/Vite/Cloudflare Workers frontend with Observable Plot charts, Python data pipeline, and complete Lailara Design System v2 styling.
+
+**State:** All application code committed and pushed. Placeholder JSON in `frontend/src/data/` works at build time. Pipeline scripts written but not yet run against the live Cinderhaven DB. `VELOCITY_DAMAGE_PER_UNIT_GAP = 3.50` in `scripts/otif_config.py` is a placeholder — needs tuning after first real pipeline run. Deploy step (U7) is wired but not executed (needs `flyctl proxy` + Cloudflare auth).
+
+**Next:** Start DB proxy (`flyctl proxy 5432 -a cinderhaven-db`), run `cd frontend && npm run pipeline`, check `pytest tests/test_data_integrity.py`, tune `VELOCITY_DAMAGE_PER_UNIT_GAP` if $320K target is off, then `npm run deploy`.
+
+---
