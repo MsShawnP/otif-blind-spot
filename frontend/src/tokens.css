@@ -1,0 +1,85 @@
+/* Lailara Design System v2 — Single source of truth for all design tokens */
+/* Do NOT use hex values directly in any other file — always reference these custom properties */
+
+:root {
+  /* Canvas & London greyscale */
+  --color-canvas: #f5f3ee;
+  --color-text-primary: #333333;
+  --color-text-secondary: #595959;
+  --color-gridline: #d9d9d9;
+  --color-reference: #666666;
+  --color-disabled: #b3b3b3;
+  --color-ink: #0d0d0d;
+
+  /* Chicago accent blue */
+  --color-navy: #1f2e7a;
+  --color-navy-hover: #141e52;
+  --color-navy-light: #8e9ad0;
+
+  /* Brand red — text and 1px rules only, never background fill */
+  --color-red: #cc100a;
+
+  /* Hong Kong sequential teal */
+  --color-hk-5: #063d32;
+  --color-hk-15: #0a5c4b;
+  --color-hk-25: #0e6e5a;
+  --color-hk-35: #158f75;
+  --color-hk-45: #1fa282;
+  --color-hk-55: #35b595;
+  --color-hk-70: #6dcdb5;
+  --color-hk-85: #b5e4d8;
+  --color-hk-95: #e4f5f0;
+
+  /* Singapore orange — warnings, operational data */
+  --color-sg-20: #7a3d10;
+  --color-sg-55: #ee8a2a;
+  --color-sg-70: #f6b97c;
+  --color-sg-95: #fdeee0;
+
+  /* Tokyo berry/rose — risk, negative signal */
+  --color-tokyo-20: #7e1f34;
+  --color-tokyo-40: #b82d4a;
+  --color-tokyo-70: #e68a9a;
+  --color-tokyo-95: #fbe9ed;
+
+  /* New York amber — reserve only */
+  --color-ny-35: #a88312;
+  --color-ny-55: #f9c31f;
+  --color-ny-95: #fef5d8;
+
+  /* Semantic status */
+  --color-pass-bg: #e4f5f0;
+  --color-pass-text: #0e6e5a;
+  --color-warn-bg: #fdeee0;
+  --color-warn-text: #7a3d10;
+  --color-fail-bg: #fde8e7;
+  --color-fail-text: #7a0906;
+  --color-info-bg: #e5e8f5;
+  --color-info-text: #1f2e7a;
+
+  /* Dark card */
+  --color-card-bg: #1a1a1a;
+  --color-card-text: #ffffff;
+  --color-card-subtitle: #d8d8d8;
+  --color-card-muted: #9a9a9a;
+  --color-card-border: rgba(255, 255, 255, 0.12);
+  --color-card-item: #ededed;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Source Sans 3', 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* Layout */
+  --content-max-width: 900px;
+  --section-gap: 60px;
+  --page-padding-x: 48px;
+  --page-padding-y: 24px;
+  --border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --page-padding-x: 16px;
+    --page-padding-y: 32px;
+  }
+}

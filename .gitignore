@@ -41,3 +41,7 @@ Thumbs.db
 
 # Project tooling
 .claude-project-url
+
+# Wrangler
+frontend/.wrangler
+.dev.vars*
