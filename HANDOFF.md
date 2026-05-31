@@ -61,3 +61,15 @@ about synthetic Walmart scorecard data remains open).
 **Next:** Start DB proxy (`flyctl proxy 5432 -a cinderhaven-db`), run `cd frontend && npm run pipeline`, check `pytest tests/test_data_integrity.py`, tune `VELOCITY_DAMAGE_PER_UNIT_GAP` if $320K target is off, then `npm run deploy`.
 
 ---
+
+## 2026-05-31 18:36
+
+**What changed:** Deployed to Cloudflare Workers; token colors corrected against official design system repo.
+
+**Why:** Arc complete — all 7 definition-of-done criteria met. Two token hex values were wrong vs LAILARA_DESIGN_SYSTEM.md (fail-bg, info-bg); fixed and redeployed.
+
+**State:** Live at otif-blind-spot.msshawnp.workers.dev. 10,201 orders, 18 integrity tests pass, 51 frontend tests pass. All tokens trace to design system. Arc fully shipped.
+
+**Next:** `/ce:review` the diff, then `/ce:compound` to extract pipeline synthesis patterns into docs/solutions/.
+
+---
