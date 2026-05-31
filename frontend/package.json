@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "cd .. && python scripts/run_pipeline.py || echo Pipeline unavailable — building with existing data",
     "build": "tsc -b && vite build",
     "test": "vitest run",
     "pipeline": "cd .. && python scripts/run_pipeline.py",
