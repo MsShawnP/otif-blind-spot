@@ -59,6 +59,21 @@ Each entry:
 - **Scope:** All written deliverables, chart titles, insight lines, footnotes
 - **Do not:** Use marketing voice ("leverage," "synergy") or hedge real findings
 
+### 2026-05-31 — Synthetic OTIF data ships against acknowledged_qty, not original PO qty
+- **Why:** Cinderhaven WMS ships against the 855 acknowledgment, not the 850 PO. Shipping against po_qty produces fill_vs_855 > 100%, which is nonsensical. The 855 quantity is the contractual shipment obligation.
+- **Scope:** `01_synthesize_otif.py` — all synthetic shipment quantity calculations
+- **Do not:** Set `synthetic_shipped_qty = po_qty` for non-short-ship orders. Use `acknowledged_qty` as the base.
+
+### 2026-05-31 — Internal fill rate (95%) is hardcoded, not derived from Cinderhaven data
+- **Why:** Cinderhaven seed data has `units_shipped = total_units` everywhere (100% fill). The "95% internal fill" is a portfolio claim representing what a real brand would report — it cannot be derived from the synthetic platform data without introducing artificial defects that would corrupt the OTIF simulation.
+- **Scope:** `02_export_json.py` `build_summary()` — `internal_fill_rate` field only
+- **Do not:** Attempt to compute internal_fill_rate from `total_shipped / total_ack` or `total_shipped / total_po` in the current synthesis. Both give incorrect results (> 100% or reflecting the short-ship rate, not the portfolio claim).
+
+### 2026-05-31 — COGS_MULTIPLIER scales Cinderhaven seed COGS to match brief's brand magnitude
+- **Why:** Cinderhaven seed COGS averages ~$616/order (50 SKUs × average 70 units × ~$2.20/unit). The brief assumes a $3M–$20M specialty food brand with proportionally larger COGS. Without scaling, annual fines compute to ~$8K instead of ~$140K. The multiplier (currently 14.0) is a documented, tunable constant — not a hidden fudge factor.
+- **Scope:** `01_synthesize_otif.py` — all COGS and fine calculations
+- **Do not:** Remove the multiplier to "use real COGS." The real COGS represent the seed's arbitrary scale, not a real brand. The multiplier is what makes the portfolio numbers coherent.
+
 ---
 
 ## Reversed / Superseded

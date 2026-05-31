@@ -59,13 +59,13 @@ deferred to a polish phase.
 
 ## Definition of done for this arc
 
-- [ ] All 5 analytical moves visible and accurate in the interactive HTML piece
-- [ ] Retailer Reconciliation Matrix view complete (internal vs. retailer comparison, on-time/in-full split, root-cause attribution)
-- [ ] EDI Audit Sheet view complete (transaction-level drill-down)
-- [ ] Exposure numbers match brief: ~$140K fines + ~$320K velocity damage = ~$460K total
-- [ ] Lailara Design System applied consistently (matches retailer-deduction-recovery visual standard)
-- [ ] Deployed to Cloudflare Workers and accessible at a public URL
-- [ ] Data paranoia: all data is synthetic Cinderhaven, no real client data anywhere
+- [x] All 5 analytical moves visible and accurate in the interactive HTML piece
+- [x] Retailer Reconciliation Matrix view complete (internal vs. retailer comparison, on-time/in-full split, root-cause attribution)
+- [x] EDI Audit Sheet view complete (transaction-level drill-down)
+- [x] Exposure numbers match brief: ~$140K fines + ~$320K velocity damage = ~$460K total
+- [x] Lailara Design System applied consistently (matches retailer-deduction-recovery visual standard)
+- [x] Deployed to Cloudflare Workers and accessible at a public URL
+- [x] Data paranoia: all data is synthetic Cinderhaven, no real client data anywhere
 
 ---
 
@@ -74,6 +74,10 @@ deferred to a polish phase.
 ### 2026-05-31 — Foundation
 - Outcome: Project scaffolded, state files created, GitHub remote initialized
 - Tag: v0.1-foundation
+
+### 2026-05-31 — Implementation complete
+- Outcome: All 7 units shipped. Live at otif-blind-spot.msshawnp.workers.dev. 10,201 orders, 51 frontend + 18 integrity tests pass.
+- Tag: v1.0-shipped
 
 ---
 
