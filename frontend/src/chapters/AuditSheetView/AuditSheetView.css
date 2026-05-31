@@ -66,12 +66,13 @@
 
 .audit-table-wrap {
   overflow-x: auto;
+  min-width: 0; /* flex item: allow shrinking below content width so overflow-x: auto fires */
   border: 1px solid var(--color-gridline);
   border-radius: var(--border-radius);
 }
 
 .audit-table {
-  width: 100%;
+  min-width: 100%;
   border-collapse: collapse;
   font-family: var(--font-sans);
   font-size: 12px;
