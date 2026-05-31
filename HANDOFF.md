@@ -82,6 +82,6 @@ about synthetic Walmart scorecard data remains open).
 
 **State:** Live at otif-blind-spot.msshawnp.workers.dev. All 7 definition-of-done criteria met. 51 frontend + 18 integrity tests pass. No broken states.
 
-**Next:** `/ce:review` the diff (pipeline scripts + ReconciliationView highest risk), then `/ce:compound` for OTIF synthesis patterns.
+**Next:** Fix EDI Audit Sheet horizontal scroll first (columns overflow viewport — needs layout fix), then `/ce:review`, then `/ce:compound`.
 
 ---
