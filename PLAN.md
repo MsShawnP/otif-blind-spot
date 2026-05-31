@@ -34,6 +34,7 @@ deferred to a polish phase.
 - [x] Run /clarify to scope the work
 - [x] Run /ce:brainstorm to write the spec
 - [x] Run /ce:plan to research and plan implementation
+- [x] Run /ce:work — all 7 implementation units complete (51 tests, build passing)
 
 ## Analytical moves (all in scope)
 
