@@ -1,34 +1,34 @@
 [
   {
-    "cause": "warehouse_late",
-    "label": "Warehouse late",
-    "failure_mode": "on_time",
-    "gap_pts": 3.0,
-    "shipment_count": 0,
-    "pct_of_gap": 0.333
-  },
-  {
     "cause": "carrier_late",
     "label": "Carrier late",
     "failure_mode": "on_time",
-    "gap_pts": 2.0,
-    "shipment_count": 0,
-    "pct_of_gap": 0.222
+    "gap_pts": 3.05,
+    "shipment_count": 488,
+    "pct_of_gap": 0.3466
   },
   {
     "cause": "production_short_ship",
     "label": "Production short-ship",
     "failure_mode": "in_full",
-    "gap_pts": 2.5,
-    "shipment_count": 0,
-    "pct_of_gap": 0.278
+    "gap_pts": 2.41,
+    "shipment_count": 420,
+    "pct_of_gap": 0.2739
+  },
+  {
+    "cause": "warehouse_late",
+    "label": "Warehouse late",
+    "failure_mode": "on_time",
+    "gap_pts": 2.06,
+    "shipment_count": 329,
+    "pct_of_gap": 0.2341
   },
   {
     "cause": "order_trimming",
     "label": "Order trimming",
     "failure_mode": "in_full",
-    "gap_pts": 1.5,
-    "shipment_count": 0,
-    "pct_of_gap": 0.167
+    "gap_pts": 1.28,
+    "shipment_count": 224,
+    "pct_of_gap": 0.1455
   }
 ]

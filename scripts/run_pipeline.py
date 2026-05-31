@@ -19,7 +19,7 @@ SCRIPTS_DIR = Path(__file__).parent
 
 
 def run(script: str):
-    print(f"\n{'─' * 60}", flush=True)
+    print(f"\n{'-' * 60}", flush=True)
     print(f"Running {script}...", flush=True)
     result = subprocess.run(
         [sys.executable, str(SCRIPTS_DIR / script)],
@@ -35,7 +35,7 @@ def main():
     run("00_query_cinderhaven.py")
     run("01_synthesize_otif.py")
     run("02_export_json.py")
-    print(f"\n{'─' * 60}", flush=True)
+    print(f"\n{'-' * 60}", flush=True)
     print("Pipeline complete.", flush=True)
 
 

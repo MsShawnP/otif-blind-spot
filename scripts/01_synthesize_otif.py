@@ -17,10 +17,10 @@ from datetime import date, timedelta
 
 from otif_config import (
     RNG_SEED, MABD_WINDOW_DAYS, OTIF_FINE_RATE, VELOCITY_DAMAGE_PER_UNIT_GAP,
-    ON_TIME_FAIL_RATE, IN_FULL_FAIL_RATE,
+    ON_TIME_FAIL_RATE, WAREHOUSE_LATE_FRACTION,
     ORDER_TRIM_RATE, ACK_RATE_MIN, ACK_RATE_MAX,
     SHORT_SHIP_RATE, SHORT_SHIP_MIN, SHORT_SHIP_MAX,
-    CACHE_DIR,
+    COGS_MULTIPLIER, CACHE_DIR,
 )
 
 
@@ -55,7 +55,8 @@ def synthesize(orders: list[dict], rng: random.Random) -> list[dict]:
         on_time_fail = rng.random() < ON_TIME_FAIL_RATE
         row["on_time_result"] = not on_time_fail
         if on_time_fail:
-            row["on_time_root_cause"] = "warehouse_late" if asn_sent_late else "carrier_late"
+            # Use probability-based split (not purely asn_sent_late) for balanced attribution
+            row["on_time_root_cause"] = "warehouse_late" if rng.random() < WAREHOUSE_LATE_FRACTION else "carrier_late"
         else:
             row["on_time_root_cause"] = None
 
@@ -68,13 +69,15 @@ def synthesize(orders: list[dict], rng: random.Random) -> list[dict]:
             acknowledged_qty = po_qty
         row["acknowledged_qty"] = acknowledged_qty
 
-        # --- Shipped qty (production short-ship synthesis) ---
+        # --- Shipped qty ---
+        # Ships against acknowledged_qty (not original PO), matching real WMS behavior.
+        # For short-ship orders, ships a fraction of acknowledged_qty.
         is_short_ship = rng.random() < SHORT_SHIP_RATE
-        if is_short_ship and po_qty > 0:
+        if is_short_ship and acknowledged_qty > 0:
             ship_ratio = rng.uniform(SHORT_SHIP_MIN, SHORT_SHIP_MAX)
-            synthetic_shipped = max(1, round(po_qty * ship_ratio))
+            synthetic_shipped = max(1, round(acknowledged_qty * ship_ratio))
         else:
-            synthetic_shipped = po_qty
+            synthetic_shipped = acknowledged_qty
         row["synthetic_shipped_qty"] = synthetic_shipped
 
         # --- In-full result ---
@@ -86,14 +89,16 @@ def synthesize(orders: list[dict], rng: random.Random) -> list[dict]:
             row["in_full_root_cause"] = None
 
         # --- COGS and OTIF fine ---
-        row["cogs"] = round(total_cogs, 2)
-        if total_cogs > 0 and (not row["on_time_result"] or not in_full_result):
-            row["otif_fine"] = round(total_cogs * OTIF_FINE_RATE, 2)
+        # Apply multiplier to scale seed COGS to brand magnitude described in brief.
+        scaled_cogs = round(total_cogs * COGS_MULTIPLIER, 2)
+        row["cogs"] = scaled_cogs
+        if scaled_cogs > 0 and (not row["on_time_result"] or not in_full_result):
+            row["otif_fine"] = round(scaled_cogs * OTIF_FINE_RATE, 2)
         else:
             row["otif_fine"] = 0.0
 
-        # --- Velocity damage (in-full failures only) ---
-        missed_units = max(0, po_qty - synthetic_shipped)
+        # --- Velocity damage (units short vs acknowledged, for in-full failures) ---
+        missed_units = max(0, acknowledged_qty - synthetic_shipped)
         row["velocity_damage"] = round(missed_units * VELOCITY_DAMAGE_PER_UNIT_GAP, 2)
 
         result.append(row)
