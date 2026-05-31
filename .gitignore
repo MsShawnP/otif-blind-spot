@@ -45,3 +45,6 @@ Thumbs.db
 # Wrangler
 frontend/.wrangler
 .dev.vars*
+
+# Pipeline cache (intermediate files — commit only the exported JSON in frontend/src/data/)
+scripts/cache/*.json
