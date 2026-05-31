@@ -37,3 +37,15 @@ about synthetic Walmart scorecard data remains open).
 **Next:** Start /ce:work — resolve the three P1 decisions first (JSON path src/data vs public/data, Observable Plot override of R12, velocity damage formula definition), then implement U2 (data generation pipeline).
 
 ---
+
+## 2026-05-31 16:00
+
+**Started from:** New project with only the portfolio brief present. No git, no state files, no plan.
+
+**Did:** Full planning phase — /new-project scaffold, /clarify (stack + scope), /ce:brainstorm (requirements doc), /ce:plan (7-unit implementation plan + headless doc review). 18 doc-review findings: 2 auto-fixed, 10 proposed fixes + 8 decisions outstanding. Pushed and tagged v0.2-planning.
+
+**State:** Planning complete. No application code. `docs/brainstorms/otif-blind-spot-requirements.md` and `docs/plans/2026-05-31-001-feat-otif-blind-spot-portfolio-piece-plan.md` committed and pushed. Key discovery: Cinderhaven has no MABD, no 855 layer, no po_qty column — OTIF data must be fully synthesized in Python.
+
+**Next:** Before /ce:work — resolve 3 P1 plan decisions: (1) add R10 override note in U2 for src/data path, (2) add R12/Key Decisions override note for Observable Plot, (3) define velocity damage formula in otif_config.py. Then start U2 (data generation pipeline).
+
+---
