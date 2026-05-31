@@ -37,6 +37,104 @@
   margin-bottom: 16px;
 }
 
+/* ─── App main content area ────────────────────────────────────────────────── */
+
+.app-main {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 48px var(--page-padding-x) var(--section-gap);
+}
+
+/* ─── Headline hook ──────────────────────────────────────────────────────────── */
+
+.headline-hook {
+  background-color: var(--color-canvas);
+  border-bottom: 1px solid var(--color-gridline);
+}
+
+.headline-hook__inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 48px var(--page-padding-x) 40px;
+}
+
+.headline-hook__numbers {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.headline-hook__number-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headline-hook__pct {
+  font-family: var(--font-serif);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.headline-hook__pct--low {
+  color: var(--color-red);
+}
+
+.headline-hook__label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  max-width: 200px;
+}
+
+.headline-hook__sublabel {
+  font-style: italic;
+}
+
+.headline-hook__divider {
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--color-disabled);
+  padding-top: 8px;
+  line-height: 1;
+  align-self: flex-start;
+}
+
+.headline-hook__gap {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  border-left: 3px solid var(--color-gridline);
+  padding-left: 16px;
+  max-width: 580px;
+}
+
+@media (max-width: 640px) {
+  .headline-hook__pct {
+    font-size: 44px;
+  }
+
+  .headline-hook__divider {
+    font-size: 32px;
+  }
+
+  .headline-hook__gap {
+    font-size: 16px;
+  }
+}
+
+/* ─── Accessibility utility ─────────────────────────────────────────────── */
+
 .sr-only {
   position: absolute;
   width: 1px;
