@@ -32,7 +32,7 @@ to the next. Visualizations get reviewed in their own slice, not
 deferred to a polish phase.
 
 - [x] Run /clarify to scope the work
-- [ ] Run /ce:brainstorm to write the spec
+- [x] Run /ce:brainstorm to write the spec
 - [ ] Run /ce:plan to research and plan implementation
 
 ## Analytical moves (all in scope)
