@@ -1,0 +1,43 @@
+# Secrets and environment
+.env
+.env.*
+*.key
+credentials.*
+secrets.*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Node / JS
+node_modules/
+.next/
+dist/
+.env*.local
+
+# Data files (never commit real client data)
+data/raw/
+data/client/
+*.csv
+*.xlsx
+*.parquet
+!data/synthetic/**
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project tooling
+.claude-project-url
