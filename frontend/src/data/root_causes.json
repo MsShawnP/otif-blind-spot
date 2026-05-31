@@ -1,0 +1,34 @@
+[
+  {
+    "cause": "warehouse_late",
+    "label": "Warehouse late",
+    "failure_mode": "on_time",
+    "gap_pts": 3.0,
+    "shipment_count": 0,
+    "pct_of_gap": 0.333
+  },
+  {
+    "cause": "carrier_late",
+    "label": "Carrier late",
+    "failure_mode": "on_time",
+    "gap_pts": 2.0,
+    "shipment_count": 0,
+    "pct_of_gap": 0.222
+  },
+  {
+    "cause": "production_short_ship",
+    "label": "Production short-ship",
+    "failure_mode": "in_full",
+    "gap_pts": 2.5,
+    "shipment_count": 0,
+    "pct_of_gap": 0.278
+  },
+  {
+    "cause": "order_trimming",
+    "label": "Order trimming",
+    "failure_mode": "in_full",
+    "gap_pts": 1.5,
+    "shipment_count": 0,
+    "pct_of_gap": 0.167
+  }
+]
