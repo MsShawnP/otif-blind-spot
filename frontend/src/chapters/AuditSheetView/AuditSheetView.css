@@ -181,7 +181,7 @@
 .audit-page-btn {
   padding: 6px 16px;
   background: var(--color-navy);
-  color: #ffffff;
+  color: var(--color-card-text);
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;

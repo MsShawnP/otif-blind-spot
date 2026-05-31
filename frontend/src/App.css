@@ -156,21 +156,21 @@
       content: 'OTIF Blind Spot — Lailara LLC';
       font-family: 'Source Sans 3', Arial, sans-serif;
       font-size: 9pt;
-      color: #595959;
+      color: #595959; /* London-35: CSS vars unsupported in @page margin boxes */
     }
 
     @bottom-right {
       content: 'Page ' counter(page);
       font-family: 'Source Sans 3', Arial, sans-serif;
       font-size: 9pt;
-      color: #595959;
+      color: #595959; /* London-35: CSS vars unsupported in @page margin boxes */
     }
   }
 
   body,
   .app-shell {
     background: white !important;
-    color: #333333;
+    color: var(--color-text-primary);
   }
 
   .chapter-nav {
