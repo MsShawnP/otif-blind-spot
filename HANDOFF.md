@@ -85,3 +85,15 @@ about synthetic Walmart scorecard data remains open).
 **Next:** Fix EDI Audit Sheet horizontal scroll first (columns overflow viewport — needs layout fix), then `/ce:review`, then `/ce:compound`.
 
 ---
+
+## 2026-05-31 23:30 — Session close
+
+**Started from:** Post-ship. Live at otif-blind-spot.msshawnp.workers.dev. One deferred item: EDI Audit Sheet columns overflowing the viewport (page-level horizontal scroll).
+
+**Did:** Fixed EDI Audit Sheet horizontal scroll (`min-width: 0` on flex item, `min-width: 100%` on table — 2 CSS property changes). Ran `/ce:review` (6 reviewers, clean, Ready to merge). Ran `/ce:compound` (Full + session history) — created `docs/solutions/ui-bugs/flex-min-width-table-scroll-bypass-2026-05-31.md`. Updated CLAUDE.md to surface `docs/solutions/` to future agents. Pushed 2 commits.
+
+**State:** Arc fully complete. Live, clean, pushed. `docs/solutions/` initialized. No open bugs, no deferred items.
+
+**Next:** Arc is done — nothing pending. Good starting points: `/improve` on the project, scope the next Lailara workstream, or start a new portfolio piece.
+
+---
