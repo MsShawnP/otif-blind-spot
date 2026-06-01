@@ -24,23 +24,24 @@ const FILTER_LABELS: Record<FilterMode, string> = {
 interface Column {
   key: keyof AuditRow
   label: string
+  width: string
   sortable: boolean
   render: (row: AuditRow) => string | React.ReactNode
 }
 
 const COLUMNS: Column[] = [
-  { key: 'po_number',           label: 'PO #',          sortable: true,  render: (r) => r.po_number },
-  { key: 'ship_date',           label: 'Ship date',      sortable: true,  render: (r) => r.ship_date ?? '—' },
-  { key: 'mabd',                label: 'MABD',           sortable: true,  render: (r) => r.mabd ?? '—' },
-  { key: 'delivery_date',       label: 'Delivery date',  sortable: true,  render: (r) => r.delivery_date ?? '—' },
-  { key: 'on_time_result',      label: 'On-time?',       sortable: true,  render: (r) => <ResultChip pass={r.on_time_result} /> },
-  { key: 'on_time_root_cause',  label: 'Root cause',     sortable: false, render: (r) => r.on_time_root_cause ?? '—' },
-  { key: 'po_units',            label: 'PO units',       sortable: true,  render: (r) => r.po_units.toLocaleString() },
-  { key: 'acknowledged_units',  label: 'Acknowledged',   sortable: true,  render: (r) => r.acknowledged_units.toLocaleString() },
-  { key: 'shipped_units',       label: 'Shipped',        sortable: true,  render: (r) => r.shipped_units.toLocaleString() },
-  { key: 'in_full_result',      label: 'In-full?',       sortable: true,  render: (r) => <ResultChip pass={r.in_full_result} /> },
-  { key: 'in_full_root_cause',  label: 'Root cause',     sortable: false, render: (r) => r.in_full_root_cause ?? '—' },
-  { key: 'otif_fine',           label: 'OTIF fine',      sortable: true,  render: (r) => r.otif_fine > 0 ? formatDollars(r.otif_fine) : '—' },
+  { key: 'po_number',           label: 'PO #',          width: '7%',  sortable: true,  render: (r) => r.po_number },
+  { key: 'ship_date',           label: 'Ship date',      width: '8%',  sortable: true,  render: (r) => r.ship_date ?? '—' },
+  { key: 'mabd',                label: 'MABD',           width: '7%',  sortable: true,  render: (r) => r.mabd ?? '—' },
+  { key: 'delivery_date',       label: 'Delivery date',  width: '9%',  sortable: true,  render: (r) => r.delivery_date ?? '—' },
+  { key: 'on_time_result',      label: 'On-time?',       width: '7%',  sortable: true,  render: (r) => <ResultChip pass={r.on_time_result} /> },
+  { key: 'on_time_root_cause',  label: 'Root cause',     width: '13%', sortable: false, render: (r) => r.on_time_root_cause ?? '—' },
+  { key: 'po_units',            label: 'PO units',       width: '7%',  sortable: true,  render: (r) => r.po_units.toLocaleString() },
+  { key: 'acknowledged_units',  label: 'Acknowledged',   width: '8%',  sortable: true,  render: (r) => r.acknowledged_units.toLocaleString() },
+  { key: 'shipped_units',       label: 'Shipped',        width: '7%',  sortable: true,  render: (r) => r.shipped_units.toLocaleString() },
+  { key: 'in_full_result',      label: 'In-full?',       width: '7%',  sortable: true,  render: (r) => <ResultChip pass={r.in_full_result} /> },
+  { key: 'in_full_root_cause',  label: 'Root cause',     width: '13%', sortable: false, render: (r) => r.in_full_root_cause ?? '—' },
+  { key: 'otif_fine',           label: 'OTIF fine',      width: '7%',  sortable: true,  render: (r) => r.otif_fine > 0 ? formatDollars(r.otif_fine) : '—' },
 ]
 
 function ResultChip({ pass }: { pass: boolean }) {
@@ -151,6 +152,11 @@ export function AuditSheetView({ rows }: AuditSheetViewProps) {
 
       <div className="audit-table-wrap">
         <table className="audit-table">
+          <colgroup>
+            {COLUMNS.map((col) => (
+              <col key={col.key} style={{ width: col.width }} />
+            ))}
+          </colgroup>
           <thead>
             <tr>
               {COLUMNS.map((col) => (

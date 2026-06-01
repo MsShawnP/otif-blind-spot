@@ -86,6 +86,18 @@ about synthetic Walmart scorecard data remains open).
 
 ---
 
+## 2026-05-31 21:35 — Session close
+
+**Started from:** Post-ship, arc complete. Ran /improve — deferred EDI Audit Sheet scroll fix from previous session was the primary user concern.
+
+**Did:** Full /improve pass (audit + 6 fixes). Fixed EDI Audit Sheet: eliminated all horizontal scrolling (overflow: hidden, table-layout: fixed, colgroup with % widths). Fixed header-clipping regression introduced during the scroll fix (removed white-space: nowrap from .audit-th). Added overflow-wrap: break-word to data cells. Drove colgroup from COLUMNS array (added width field to Column interface). Filled README Stack/How-to-run sections. Fixed DATABASE_URL fallback to fail fast on missing credentials. Removed unused DEMO_DATE export. Updated docs/solutions/ doc to document Strategy B and when to use each approach. npm audit: 0 vulnerabilities. Build passes, 51/51 tests pass.
+
+**State:** Fully clean. All 6 improvement items resolved. No broken states, no deferred items. Unpushed commits on main.
+
+**Next:** Nothing pending on this project. Deploy improvement changes (`npm run deploy` from frontend/) or start next Lailara workstream.
+
+---
+
 ## 2026-05-31 23:30 — Session close
 
 **Started from:** Post-ship. Live at otif-blind-spot.msshawnp.workers.dev. One deferred item: EDI Audit Sheet columns overflowing the viewport (page-level horizontal scroll).
