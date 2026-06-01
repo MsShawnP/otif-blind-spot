@@ -10,11 +10,32 @@ Built on the Cinderhaven Data Platform with synthetic Walmart OTIF scorecard dat
 
 ## Stack
 
-TBD — to be scoped during planning phase.
+- React + TypeScript + Vite + Observable Plot (frontend)
+- Python + psycopg2 (data generation pipeline)
+- Cloudflare Workers (deployment)
+- Lailara Design System v2 (Playfair Display + Source Sans 3, canvas bg, SVG charts)
 
 ## How to run
 
-TBD.
+**Prerequisites:** Node 18+, Python 3.11+, `flyctl` (Fly.io CLI), Cloudflare `wrangler` auth.
+
+```bash
+# 1. Start the DB proxy (Cinderhaven Postgres on Fly.io)
+flyctl proxy 5432 -a cinderhaven-db
+
+# 2. Generate the data (in a second terminal)
+cd frontend
+npm install
+npm run pipeline        # runs Python scripts → writes JSON to src/data/
+
+# 3. Run locally
+npm run dev             # http://localhost:5173
+
+# 4. Deploy to Cloudflare Workers
+npm run deploy
+```
+
+Set `DATABASE_URL` or `POSTGRES_PASSWORD` in a `.env` file in the `scripts/` directory before running the pipeline. See `scripts/otif_config.py` for the full config.
 
 ## Part of the short-ship workstream
 

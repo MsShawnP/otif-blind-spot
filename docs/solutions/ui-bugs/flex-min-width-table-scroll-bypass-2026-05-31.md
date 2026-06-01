@@ -144,7 +144,53 @@ Apply this pattern whenever you have a flex item that contains horizontally scro
 even when the content should be wider than the container, the flex item's `min-width: auto`
 default is almost certainly the cause.
 
+## Follow-up (2026-05-31): Strategy superseded by no-scroll requirement
+
+The solution above (Strategy A) was later replaced when the requirement changed from
+"scoped scrollbar inside the wrapper" to "no scrolling at all — all columns must fit on screen."
+
+**Strategy B (current):**
+
+```css
+.audit-table-wrap {
+  overflow: hidden;           /* no scroll — content is clipped if it overflows */
+  border: 1px solid var(--color-gridline);
+  border-radius: var(--border-radius);
+}
+
+.audit-table {
+  width: 100%;
+  table-layout: fixed;        /* columns sized by <colgroup>, not by content */
+  border-collapse: collapse;
+}
+
+.audit-th {
+  /* white-space: nowrap removed — headers can wrap to two lines in narrow columns */
+}
+
+.audit-td {
+  overflow-wrap: break-word;  /* prevents unbreakable tokens from bleeding past fixed cell */
+}
+```
+
+Column widths are driven by a `<colgroup>` whose `<col>` elements are mapped from the `COLUMNS`
+array (each entry has a `width` field). This keeps the column count and widths structurally in
+sync with the column definitions — a hardcoded colgroup would drift silently if columns were
+added or removed.
+
+**When to use Strategy A vs B:**
+
+- **Strategy A** (`min-width: 0` + `overflow-x: auto`): use when the table has variable or
+  unknown column count, content-driven widths are desirable, or the table must show all columns
+  without wrapping at any content length. The table will grow to its natural content width and
+  scroll within its wrapper.
+- **Strategy B** (`table-layout: fixed` + `overflow: hidden`): use when the table must fit
+  entirely within a fixed viewport width with no scrollbar. Requires explicit column widths and
+  acceptance that long content wraps rather than expanding the column.
+
 ## Related Issues
 
 - Session `bb48a5b6` (2026-05-31): bug shipped without being caught; deferred to next session
 - Committed in `0e9c587`: `fix: prevent EDI Audit Sheet from scrolling the full page horizontally`
+- Committed in improvement pass (2026-05-31): switched to Strategy B on user requirement that
+  no horizontal scrolling appear at all, not even a scoped wrapper scrollbar

@@ -49,7 +49,12 @@ CACHE_DIR = os.path.join(SCRIPTS_DIR, "cache")
 DATA_OUT_DIR = os.path.join(PROJECT_ROOT, "frontend", "src", "data")
 
 # DB connection — mirrors Cinderhaven platform pattern
-DATABASE_URL = os.environ.get(
-    "DATABASE_URL",
-    f"postgresql://postgres:{os.environ.get('POSTGRES_PASSWORD', '')}@localhost:5432/cinderhaven"
-)
+_database_url = os.environ.get("DATABASE_URL")
+if not _database_url:
+    _pg_password = os.environ.get("POSTGRES_PASSWORD")
+    if not _pg_password:
+        raise EnvironmentError(
+            "Set DATABASE_URL or POSTGRES_PASSWORD in .env before running the pipeline."
+        )
+    _database_url = f"postgresql://postgres:{_pg_password}@localhost:5432/cinderhaven"
+DATABASE_URL = _database_url

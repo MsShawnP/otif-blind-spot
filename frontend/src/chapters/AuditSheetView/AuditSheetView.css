@@ -65,14 +65,14 @@
 /* ─── Table ──────────────────────────────────────────────────────────────── */
 
 .audit-table-wrap {
-  overflow-x: auto;
-  min-width: 0; /* flex item: allow shrinking below content width so overflow-x: auto fires */
+  overflow: hidden;
   border: 1px solid var(--color-gridline);
   border-radius: var(--border-radius);
 }
 
 .audit-table {
-  min-width: 100%;
+  width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-family: var(--font-sans);
   font-size: 12px;
@@ -89,7 +89,6 @@
   color: var(--color-text-secondary);
   background-color: var(--color-canvas);
   border-bottom: 1px solid var(--color-gridline);
-  white-space: nowrap;
   user-select: none;
 }
 
@@ -113,8 +112,8 @@
 .audit-td {
   padding: 8px 12px;
   border-bottom: 1px solid var(--color-gridline);
-  white-space: nowrap;
   vertical-align: middle;
+  overflow-wrap: break-word;
 }
 
 .audit-row:last-child .audit-td {

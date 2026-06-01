@@ -84,3 +84,19 @@ deferred to a polish phase.
 ## Improvement history
 
 <!-- Entries are added by /improve — don't delete this section -->
+
+### 2026-05-31 — Improvement pass
+- **Trigger:** User-initiated post-ship health check
+- **What was reviewed:** All workflow files, code quality, tests, dependencies, documentation, git hygiene, security audit (ce-security-sentinel), code review (ce-correctness, ce-testing, ce-kieran-typescript, ce-learnings-researcher)
+- **What was fixed:**
+  - EDI Audit Sheet: eliminated all horizontal scrolling — `overflow: hidden` + `table-layout: fixed` + `<colgroup>` with proportional column widths
+  - EDI Audit Sheet: fixed header clipping bug introduced during scroll fix (removed `white-space: nowrap` from `.audit-th`)
+  - EDI Audit Sheet: added `overflow-wrap: break-word` to data cells to prevent token bleed
+  - EDI Audit Sheet: drove colgroup from `COLUMNS` array (added `width` field to Column interface) — eliminates hardcoded column count drift risk
+  - README: filled in Stack and "How to run" sections (were TBD since scaffold)
+  - `scripts/otif_config.py`: DATABASE_URL fallback now raises `EnvironmentError` instead of silently constructing empty-password connection string
+  - `domain.ts`: removed unused `DEMO_DATE` export
+  - `docs/solutions/flex-min-width-table-scroll-bypass-2026-05-31.md`: updated to document Strategy B (table-layout fixed) and when to use each strategy
+  - npm audit: 0 vulnerabilities confirmed
+- **Deferred:** None — all findings resolved
+- **Next review:** 2026-06-30

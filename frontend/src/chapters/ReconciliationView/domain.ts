@@ -8,8 +8,6 @@ export const ROOT_CAUSE_COLORS: Record<string, string> = {
   order_trimming:        '#f6b97c',  // --color-sg-70
 }
 
-export const DEMO_DATE = '2026-05-31'
-
 export interface DecompositionBar {
   label: string
   pts: number

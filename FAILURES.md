@@ -27,6 +27,34 @@ shouldn't re-attempt dead ends because the lesson got lost.
 
 ## Entries
 
+### 2026-05-31 — min-width:0 + overflow-x:auto scoped the scroll but didn't eliminate it
+
+**Attempted:** Fixed page-level horizontal scroll using the canonical flex pattern: `min-width: 0` on `.audit-table-wrap` (allows flex item to shrink) + `min-width: 100%` on `.audit-table` (allows table to exceed wrapper). This created a scoped scrollbar inside the wrapper instead of page-level scroll.
+
+**Why it didn't work:** The requirement was no scrolling at all — not a scoped scrollbar, but zero scroll anywhere. The fix was correct for the stated bug at the time, but the user's actual requirement was stricter.
+
+**What we tried instead:** Strategy B — `overflow: hidden` on the wrapper, `table-layout: fixed; width: 100%` on the table, `<colgroup>` with explicit percentage widths summing to 100%, `white-space: nowrap` removed from both headers and cells. This forces the table to fit its container exactly with no scroll possible.
+
+**Status:** Resolved — Strategy B now in place
+
+**Tags:** css-flexbox, table-layout, scroll-behavior, overflow, no-scroll, strategy-a-vs-b
+
+---
+
+### 2026-05-31 — Removing white-space:nowrap from .audit-td but not .audit-th clipped column headers
+
+**Attempted:** Removed `white-space: nowrap` from `.audit-td` to allow data cells to wrap in fixed-width columns. Left `white-space: nowrap` on `.audit-th` untouched.
+
+**Why it didn't work:** With `table-layout: fixed`, column widths are locked to the colgroup percentages — headers can no longer expand their column. "Delivery date" in a 9% column has ~48px usable space; the header text at 11px uppercase is ~78px. `white-space: nowrap` forbids wrapping, so the text overflowed the fixed cell. The wrapper's `overflow: hidden` hard-clipped it with no ellipsis — headers like "DELIVERY DA" and "ACKNOWLEDG" were silently truncated.
+
+**What we tried instead:** Removed `white-space: nowrap` from `.audit-th` as well, allowing headers to wrap to two lines when needed. Also added `overflow-wrap: break-word` to `.audit-td` so unbreakable data tokens (PO numbers, dates) break at word boundaries rather than bleeding past fixed cells.
+
+**Status:** Resolved
+
+**Tags:** css, table-layout-fixed, white-space-nowrap, header-clipping, overflow-hidden, audit-sheet
+
+---
+
 ### 2026-05-31 — Synthesis shipped against po_qty instead of acknowledged_qty, giving fill_vs_855 > 100%
 
 **Attempted:** Set `synthetic_shipped_qty = po_qty` for non-short-ship orders, then computed `fill_vs_855 = total_shipped / total_ack`. For trimmed orders where acknowledged < po_qty, this produced ratios above 1.0.
