@@ -37,8 +37,16 @@ npm run deploy
 
 Set `DATABASE_URL` or `POSTGRES_PASSWORD` in a `.env` file in the `scripts/` directory before running the pipeline. See `scripts/otif_config.py` for the full config.
 
+## Data contract
+
+Canonical Cinderhaven conformance — 50 SKUs across 5 product lines and 6 contracted retailers.
+
 ## Part of the short-ship workstream
 
 - **OTIF Blind Spot** (this piece) — reveals how bad fill performance actually is and where failures originate
 - **The 150 Cases** — quantifies the cost of short-ships
 - **Production Demand Forecast** — prevents the short-ships that cause in-full failures
+
+---
+
+Built by [Lailara LLC](https://lailarallc.com) — data hygiene and analytics consulting for specialty food brands scaling into national retail.
