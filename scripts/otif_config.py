@@ -5,8 +5,8 @@ import os
 from datetime import date
 
 # Data window
-WINDOW_START = date(2024, 1, 1)
-WINDOW_END = date(2026, 3, 31)
+WINDOW_START = date(2023, 1, 1)
+WINDOW_END = date(2025, 3, 31)
 
 # Retailer
 WALMART_RETAILER_ID = "RET-WALMART"
