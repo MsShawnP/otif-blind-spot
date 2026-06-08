@@ -2,9 +2,9 @@
 
 ## What this project is
 
-A Lailara portfolio diagnostic piece for specialty food brands ($3M–$20M revenue) that reconciles the brand's internal fill rate against retailer OTIF scorecards and exposes the blind spot between them. The brand thinks it ships at 96%; Walmart scores it at 86%. This analysis decomposes the 10-point gap into on-time vs. in-full failures, attributes root causes to warehouse-late vs. carrier-late vs. production short-ship vs. order trimming, and quantifies the full exposure — OTIF fines plus the shelf-velocity damage the empty shelves created. Built on the Cinderhaven Data Platform using synthetic Walmart OTIF scorecard data. Part of the short-ship workstream alongside The 150 Cases (cost) and Production Demand Forecast (prevention).
+A Lailara portfolio diagnostic piece for specialty food brands ($3M–$20M revenue) that reconciles the brand's internal fill rate against retailer OTIF scorecards and exposes the blind spot between them. The brand thinks it ships at 95%; Walmart scores it at 86%. This analysis decomposes the 10-point gap into on-time vs. in-full failures, attributes root causes to warehouse-late vs. carrier-late vs. production short-ship vs. order trimming, and quantifies the full exposure — OTIF fines plus the shelf-velocity damage the empty shelves created. Built on the Cinderhaven Data Platform using synthetic Walmart OTIF scorecard data. Part of the short-ship workstream alongside The 150 Cases (cost) and Production Demand Forecast (prevention).
 
-**Business question this project answers:** Why does Cinderhaven's internal 96% fill rate diverge from Walmart's 86% OTIF score, what failure modes drive the gap, and what is the total financial exposure including fines and velocity damage?
+**Business question this project answers:** Why does Cinderhaven's internal 95% fill rate diverge from Walmart's 86% OTIF score, what failure modes drive the gap, and what is the total financial exposure including fines and velocity damage?
 
 ## Tier
 

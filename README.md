@@ -1,6 +1,6 @@
 # OTIF Blind Spot
 
-A Lailara portfolio diagnostic that reconciles a specialty food brand's internal fill rate against retailer OTIF scorecards — exposing the gap between "96% internal" and "86% Walmart-scored," decomposing it into on-time vs. in-full failures, attributing root causes, and quantifying total exposure (fines + shelf-velocity damage).
+A Lailara portfolio diagnostic that reconciles a specialty food brand's internal fill rate against retailer OTIF scorecards — exposing the gap between "95% internal" and "86% Walmart-scored," decomposing it into on-time vs. in-full failures, attributing root causes, and quantifying total exposure (fines + shelf-velocity damage).
 
 ## What it does
 

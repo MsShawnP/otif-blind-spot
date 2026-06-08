@@ -15,7 +15,7 @@ Completes the short-ship workstream diagnostic leg — The 150 Cases (cost) and 
 
 ## Business question this arc answers
 
-Why does Cinderhaven's internal 96% fill rate diverge from Walmart's 86% OTIF score, which failure modes (on-time vs. in-full) drive the gap, and what is the full financial exposure — fines plus shelf-velocity damage?
+Why does Cinderhaven's internal 95% fill rate diverge from Walmart's 86% OTIF score, which failure modes (on-time vs. in-full) drive the gap, and what is the full financial exposure — fines plus shelf-velocity damage?
 
 ## Stack
 
