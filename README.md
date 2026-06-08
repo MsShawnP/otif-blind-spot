@@ -8,6 +8,11 @@ Brands measure fill rate at their own shipping dock (against acknowledged orders
 
 Built on the Cinderhaven Data Platform with synthetic Walmart OTIF scorecard data.
 
+## Data Contract
+
+**Cinderhaven canonical dataset:** 50 SKUs / 5 production lines / 6 retailers.
+**Scope:** This tool focuses on Walmart OTIF compliance. It intentionally analyzes a single-retailer subset of the full Cinderhaven dataset. Audits should not flag the absence of other retailers as data drift.
+
 ## Stack
 
 - React + TypeScript + Vite + Observable Plot (frontend)
