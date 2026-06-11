@@ -46,7 +46,16 @@ function App() {
   const [chapter, setChapter] = useState<1 | 2>(1)
 
   return (
-    <div className="app-shell">
+    <div className="app-shell lailara-page">
+      <header className="lailara-header">
+        <nav className="lailara-nav-inner">
+          <a href="https://lailarallc.com" className="lailara-wordmark" target="_blank" rel="noopener">
+            Lailara LLC
+          </a>
+          <span className="lailara-tool-name">OTIF Blind Spot</span>
+        </nav>
+      </header>
+
       <header className="app-header">
         <span className="brand-name">OTIF Blind Spot</span>
         <span className="brand-subtitle">Cinderhaven</span>
@@ -56,7 +65,7 @@ function App() {
 
       <ChapterNav activeChapter={chapter} onChapterChange={setChapter} />
 
-      <main className="app-main">
+      <main className="app-main lailara-main">
         {chapter === 1 && (
           <ReconciliationView
             summary={summary}
@@ -69,6 +78,13 @@ function App() {
           <AuditSheetView rows={auditRows} />
         )}
       </main>
+
+      <footer className="lailara-footer">
+        <div className="lailara-footer-inner">
+          <p>Built by <a href="https://lailarallc.com" target="_blank" rel="noopener">Lailara LLC</a></p>
+          <p className="lailara-footer-note">Data: Cinderhaven Provisions synthetic dataset.</p>
+        </div>
+      </footer>
     </div>
   )
 }
