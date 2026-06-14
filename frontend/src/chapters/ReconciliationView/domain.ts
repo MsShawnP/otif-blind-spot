@@ -4,8 +4,8 @@ import type { Summary, RootCause, TrueFill } from '../../types'
 export const ROOT_CAUSE_COLORS: Record<string, string> = {
   warehouse_late:        '#158f75',  // --color-hk-35
   carrier_late:          '#6dcdb5',  // --color-hk-70
-  production_short_ship: '#ee8a2a',  // --color-sg-55
-  order_trimming:        '#f6b97c',  // --color-sg-70
+  short_ship:            '#ee8a2a',  // --color-sg-55
+  receiving_discrepancy: '#f6b97c',  // --color-sg-70
 }
 
 export interface DecompositionBar {

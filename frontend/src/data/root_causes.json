@@ -1,34 +1,34 @@
 [
   {
-    "cause": "carrier_late",
-    "label": "Carrier late",
-    "failure_mode": "on_time",
-    "gap_pts": 3.06,
-    "shipment_count": 486,
-    "pct_of_gap": 0.3458
+    "cause": "short_ship",
+    "label": "Short-ship",
+    "failure_mode": "in_full",
+    "gap_pts": 17.58,
+    "shipment_count": 2300,
+    "pct_of_gap": 0.5745
   },
   {
-    "cause": "production_short_ship",
-    "label": "Production short-ship",
+    "cause": "receiving_discrepancy",
+    "label": "Receiving discrepancy",
     "failure_mode": "in_full",
-    "gap_pts": 2.43,
-    "shipment_count": 419,
-    "pct_of_gap": 0.2746
+    "gap_pts": 11.27,
+    "shipment_count": 1474,
+    "pct_of_gap": 0.3683
   },
   {
     "cause": "warehouse_late",
     "label": "Warehouse late",
     "failure_mode": "on_time",
-    "gap_pts": 2.06,
-    "shipment_count": 326,
-    "pct_of_gap": 0.2328
+    "gap_pts": 1.75,
+    "shipment_count": 229,
+    "pct_of_gap": 0.0572
   },
   {
-    "cause": "order_trimming",
-    "label": "Order trimming",
-    "failure_mode": "in_full",
-    "gap_pts": 1.3,
-    "shipment_count": 224,
-    "pct_of_gap": 0.1469
+    "cause": "carrier_late",
+    "label": "Carrier late",
+    "failure_mode": "on_time",
+    "gap_pts": 0.0,
+    "shipment_count": 0,
+    "pct_of_gap": 0.0
   }
 ]

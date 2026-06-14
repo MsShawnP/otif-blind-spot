@@ -128,8 +128,8 @@ function RootCauseSection({ rootCauses }: { rootCauses: RootCause[] }) {
   const implications: Record<string, string> = {
     warehouse_late:        'ASN was filed late — fix warehouse release process.',
     carrier_late:          'Carrier missed delivery window — audit carrier SLAs.',
-    production_short_ship: 'Production couldn\'t fill the order — improve forecast.',
-    order_trimming:        'Walmart trimmed the 855 — demand signal was over-ordered.',
+    short_ship:            'Brand shipped fewer units than ordered — production or allocation shortfall.',
+    receiving_discrepancy: 'Retailer received fewer units than shipped — damaged, miscounted, or lost in transit.',
   }
 
   return (
@@ -208,16 +208,23 @@ function TrueFillSection({ trueFill }: { trueFill: TrueFill }) {
 
 // ─── Move 5: Exposure quantification ─────────────────────────────────────────
 
+function SourceBadge({ source }: { source: 'platform' | 'modeled' }) {
+  const label = source === 'platform' ? 'Measured' : 'Modeled'
+  return <span className={`source-badge source-badge--${source}`}>{label}</span>
+}
+
 function ExposureSection({ exposure }: { exposure: Exposure }) {
   return (
     <div className="kpi-row">
       <div className="kpi-tile">
+        <SourceBadge source={exposure.fines_source} />
         <span className="kpi-tile__value">{formatDollars(exposure.annual_fines)}</span>
         <span className="kpi-tile__label">annual OTIF fines (3% of COGS on penalized shipments)</span>
       </div>
       <div className="kpi-tile kpi-tile--velocity">
+        <SourceBadge source={exposure.velocity_source} />
         <span className="kpi-tile__value kpi-tile__value--large">{formatDollars(exposure.annual_velocity_damage)}</span>
-        <span className="kpi-tile__label">estimated velocity damage from empty shelves</span>
+        <span className="kpi-tile__label">estimated velocity damage from empty shelves ($3.50/unit assumption)</span>
       </div>
       <div className="kpi-tile kpi-tile--total">
         <span className="kpi-tile__value">{formatDollars(exposure.total_exposure)}</span>

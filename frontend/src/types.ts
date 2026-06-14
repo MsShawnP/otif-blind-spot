@@ -41,7 +41,9 @@ export interface VelocityBySku {
 
 export interface Exposure {
   annual_fines: number
+  fines_source: 'platform' | 'modeled'
   annual_velocity_damage: number
+  velocity_source: 'platform' | 'modeled'
   total_exposure: number
   fines_by_quarter: FinesByQuarter[]
   velocity_by_sku: VelocityBySku[]

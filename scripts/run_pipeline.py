@@ -1,9 +1,8 @@
-"""Orchestrate the full OTIF data generation pipeline.
+"""Orchestrate the OTIF data pipeline.
 
 Steps:
-  00 → query Cinderhaven DB → cache/cinderhaven_snapshot.json
-  01 → synthesize OTIF data  → cache/otif_synthetic.json
-  02 → export to frontend    → frontend/src/data/*.json
+  00 -> query Cinderhaven DB -> cache/platform_fulfillment.json
+  02 -> compute OTIF + export -> frontend/src/data/*.json
 
 Usage:
   1. flyctl proxy 5432 -a cinderhaven-db
@@ -31,9 +30,8 @@ def run(script: str):
 
 
 def main():
-    print("OTIF Blind Spot — Data Generation Pipeline", flush=True)
+    print("OTIF Blind Spot - Data Pipeline (platform fulfillment)", flush=True)
     run("00_query_cinderhaven.py")
-    run("01_synthesize_otif.py")
     run("02_export_json.py")
     print(f"\n{'-' * 60}", flush=True)
     print("Pipeline complete.", flush=True)

@@ -255,6 +255,30 @@
   background: var(--color-fail-bg);
 }
 
+/* ─── Source badges (measured vs modeled) ───────────────────────────────────── */
+
+.source-badge {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  align-self: flex-start;
+  line-height: 1.4;
+}
+
+.source-badge--platform {
+  background: #e4f5f0;
+  color: #158f75;
+}
+
+.source-badge--modeled {
+  background: #fdeee0;
+  color: #a05a1a;
+}
+
 @media (max-width: 640px) {
   .root-cause-bar-row {
     grid-template-columns: 140px 1fr 52px;

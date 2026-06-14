@@ -1,46 +1,64 @@
-"""Shared constants for the OTIF Blind Spot data generation pipeline."""
+"""Shared constants for the OTIF Blind Spot data pipeline.
+
+All OTIF scores and fill rates are computed from platform causal
+fulfillment data. No target-locking or normalization.
+"""
 from __future__ import annotations
 
 import os
 from datetime import date
+from pathlib import Path
+
+# Load .env before resolving DB connection
+def _bootstrap_env():
+    try:
+        from dotenv import load_dotenv
+    except ImportError:
+        return
+    here = Path(__file__).resolve().parent
+    for candidate in [here.parent / ".env", here.parent.parent / ".env"]:
+        if candidate.exists():
+            load_dotenv(candidate)
+            return
+
+_bootstrap_env()
 
 # Data window
 WINDOW_START = date(2023, 1, 1)
-WINDOW_END = date(2025, 3, 31)
+WINDOW_END = date(2025, 12, 31)
 
-# Retailer
-WALMART_RETAILER_ID = "RET-WALMART"
+# Retailer MABD offset = max(transit_range) + otif_window_days
+# Source: cinderhaven-data-platform seed_config.py RETAILER_TRANSIT_DAYS
+# and RETAILER_OTIF_WINDOW_DAYS. These are retailer compliance policies,
+# not synthesis parameters.
+RETAILER_MABD_DAYS = {
+    "RET-WALMART": 3,     # max_transit=3 + otif_window=0
+    "RET-KROGER": 4,      # 3 + 1
+    "RET-COSTCO": 6,      # 4 + 2
+    "RET-WHOLEFOODS": 6,  # 5 + 1
+    "RET-SPROUTS": 5,     # 4 + 1
+    "RET-REGIONAL": 8,    # 6 + 2
+}
 
-# RNG — matches Cinderhaven platform convention
-RNG_SEED = 100
+RETAILER_NAMES = {
+    "RET-WALMART": "Walmart",
+    "RET-KROGER": "Kroger",
+    "RET-COSTCO": "Costco",
+    "RET-WHOLEFOODS": "Whole Foods",
+    "RET-SPROUTS": "Sprouts",
+    "RET-REGIONAL": "Regional Group",
+}
 
-# OTIF mechanics
-MABD_WINDOW_DAYS = 2        # MABD = requested_ship_date + 2 days (for display)
-OTIF_FINE_RATE = 0.03       # 3% of COGS on penalized shipments
+RETAILER_NAME_TO_ID = {v: k for k, v in RETAILER_NAMES.items()}
 
-# Portfolio targets
-TARGET_INTERNAL_FILL = 0.95
-TARGET_RETAILER_OTIF = 0.86
-TARGET_ONTIME_GAP_PTS = 5.0
-TARGET_INFULL_GAP_PTS = 4.0
+# Velocity damage: MODELED soft cost per unit of retailer shortfall.
+# Estimates shelf-velocity damage from empty shelves (lost sales velocity
+# when product isn't available). NOT a platform-computed value.
+VELOCITY_DAMAGE_PER_UNIT = 3.50
 
-# Synthesis parameters — tune if test_data_integrity fails
-ON_TIME_FAIL_RATE = 0.079       # ~7.9% of orders are late → ~5-pt on-time contribution
-WAREHOUSE_LATE_FRACTION = 0.40  # 40% of on-time failures are warehouse_late
-
-ORDER_TRIM_RATE = 0.35          # 35% of orders have acknowledged_qty < po_qty
-ACK_RATE_MIN = 0.80
-ACK_RATE_MAX = 0.95
-
-SHORT_SHIP_RATE = 0.063         # ~6.3% of orders short-ship → ~4-pt in-full contribution
-SHORT_SHIP_MIN = 0.70
-SHORT_SHIP_MAX = 0.92
-
-# COGS multiplier — scales Cinderhaven seed COGS to match brief's $3M-$20M brand magnitude
-COGS_MULTIPLIER = 14.0
-
-# Velocity damage: dollars per unit short vs acknowledged (tuned to hit ~$320K annual target)
-VELOCITY_DAMAGE_PER_UNIT_GAP = 20.0
+# Overlap note: chargebacks with reason='short_ship' are counted here as
+# OTIF fines AND in the short-ship-cost project as short-ship chargebacks.
+# Canonical scoping must ensure these are not double-counted across projects.
 
 # Paths
 SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -1,11 +1,11 @@
 {
-  "internal_fill_rate": 0.95,
-  "retailer_otif": 0.8615,
-  "gap_pts": 8.85,
-  "ontime_gap_pts": 5.12,
-  "infull_gap_pts": 3.73,
-  "total_shipments": 10124,
+  "internal_fill_rate": 0.9198,
+  "retailer_otif": 0.6138,
+  "gap_pts": 30.6,
+  "ontime_gap_pts": 1.75,
+  "infull_gap_pts": 28.85,
+  "total_shipments": 46760,
   "walmart_shipments": 10124,
   "window_start": "2023-01-01",
-  "window_end": "2025-03-31"
+  "window_end": "2025-12-31"
 }
