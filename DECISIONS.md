@@ -78,15 +78,23 @@ Each entry:
 
 ## UI & Layout
 
-### 2026-05-31 — EDI Audit Sheet uses table-layout:fixed with no scroll (Strategy B)
-- **Why:** User requirement is zero horizontal scrolling — no page-level scroll, no scoped wrapper scroll. Strategy A (`min-width: 0` + `overflow-x: auto`) scopes the scroll but doesn't eliminate it. Strategy B (`overflow: hidden` + `table-layout: fixed` + `<colgroup>` with percentage widths) forces the table into its container with no overflow possible. The 12 columns fit at the 900px content max-width with the current column proportions (7–13%).
-- **Scope:** `AuditSheetView.css` and `AuditSheetView.tsx` — table wrapper and column layout only
-- **Do not:** Switch back to `overflow-x: auto` or `min-width: 0` on `.audit-table-wrap`. Do not add `overflow-x: scroll` or `overflow-x: auto` to any ancestor of the audit table. See `docs/solutions/ui-bugs/flex-min-width-table-scroll-bypass-2026-05-31.md` for the Strategy A vs B comparison.
+### ~~2026-05-31 — EDI Audit Sheet uses table-layout:fixed with no scroll (Strategy B)~~ SUPERSEDED 2026-06-19
+- ~~**Why:** User requirement is zero horizontal scrolling — no page-level scroll, no scoped wrapper scroll. Strategy A (`min-width: 0` + `overflow-x: auto`) scopes the scroll but doesn't eliminate it. Strategy B (`overflow: hidden` + `table-layout: fixed` + `<colgroup>` with percentage widths) forces the table into its container with no overflow possible. The 12 columns fit at the 900px content max-width with the current column proportions (7–13%).~~
+- **Superseded by:** "EDI Audit Sheet uses auto layout at full page width" below.
 
-### 2026-05-31 — AuditSheetView colgroup must be driven from the COLUMNS array
-- **Why:** The `<colgroup>` has one `<col>` per column. Hardcoding 12 `<col>` elements creates a count that must be manually kept in sync with `COLUMNS.length`. If a column is added or removed, the browser silently misapplies widths. Driving the colgroup from `COLUMNS.map()` (with a `width` field on the `Column` interface) makes the count structurally impossible to drift.
-- **Scope:** `AuditSheetView.tsx` — `<colgroup>` rendering only
-- **Do not:** Replace the `COLUMNS.map()` colgroup with hardcoded `<col>` elements. Do not set column widths via `<th style>` or `.audit-th` CSS — the `<col>` approach keeps layout separate from header presentation.
+### ~~2026-05-31 — AuditSheetView colgroup must be driven from the COLUMNS array~~ SUPERSEDED 2026-06-19
+- ~~**Why:** The `<colgroup>` has one `<col>` per column. Hardcoding 12 `<col>` elements creates a count that must be manually kept in sync with `COLUMNS.length`. If a column is added or removed, the browser silently misapplies widths.~~
+- **Superseded by:** Colgroup removed entirely — no longer needed with auto table layout.
+
+### 2026-06-19 — EDI Audit Sheet uses auto layout at full page width
+- **Why:** Adding `white-space: nowrap` on date/PO columns made the 12-column table exceed the 900px content cap. Instead of forcing the table back into 900px (which caused horizontal scroll), the fix moves `max-width: 900px` from `.app-main` to `.reconciliation-view` only. The audit table gets the full viewport width (~1160px at 1440px), fitting all columns with no scroll. Removed `table-layout: fixed`, `<colgroup>`, and percentage widths — the browser's auto layout handles column sizing naturally.
+- **Scope:** `AuditSheetView.css`, `AuditSheetView.tsx`, `App.css`, `ReconciliationView.css`
+- **Do not:** Add `max-width` back to `.app-main` — that constrains the audit table. Do not add `table-layout: fixed` — auto layout with nowrap on key columns is the correct approach. The Reconciliation Matrix has its own `max-width: 900px`.
+
+### 2026-06-19 — Client-side window recomputation via computeMetrics.ts
+- **Why:** Date-range preset buttons (13w/26w/52w/full) require all figures to recompute for the selected window. Rather than re-running the Python pipeline, `computeMetrics.ts` mirrors the pipeline's summary/root-cause/true-fill/exposure logic in TypeScript, operating on per-shipment and per-chargeback data exported as JSON. The "full corpus" preset short-circuits to precomputed static data to avoid rounding drift between Python and JS.
+- **Scope:** `computeMetrics.ts`, `App.tsx`, `data.ts`, `types.ts`, `02_export_json.py` (new exports)
+- **Do not:** Add a server-side API for window filtering — this is a static portfolio piece. Do not remove the "full corpus" shortcut — it ensures the full-window figures match the Python pipeline exactly.
 
 ---
 

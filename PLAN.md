@@ -15,7 +15,9 @@ Completes the short-ship workstream diagnostic leg — The 150 Cases (cost) and 
 
 ## Business question this arc answers
 
-Why does Cinderhaven's internal 95% fill rate diverge from Walmart's 86% OTIF score, which failure modes (on-time vs. in-full) drive the gap, and what is the full financial exposure — fines plus shelf-velocity damage?
+Why does Cinderhaven's internal 92% fill rate diverge from Walmart's 61% OTIF score, which failure modes (on-time vs. in-full) drive the gap, and what is the full financial exposure — fines plus shelf-velocity damage?
+
+> **Note (2026-06-19):** The 61% OTIF figure is from synthetic data with unrealistically aggressive in-full failure rates (median shortfall 28% of PO). A cinderhaven-data-platform task is flagged to tune these to realistic levels (target: 83-88% OTIF). The diagnostic framework is sound regardless of the input numbers.
 
 ## Stack
 
@@ -62,7 +64,7 @@ deferred to a polish phase.
 - [x] All 5 analytical moves visible and accurate in the interactive HTML piece
 - [x] Retailer Reconciliation Matrix view complete (internal vs. retailer comparison, on-time/in-full split, root-cause attribution)
 - [x] EDI Audit Sheet view complete (transaction-level drill-down)
-- [x] Exposure numbers match brief: ~$140K fines + ~$320K velocity damage = ~$460K total
+- [x] ~~Exposure numbers match brief: ~$140K fines + ~$320K velocity damage = ~$460K total~~ Updated 2026-06-19: 36-month window produces $55K fines + $368K velocity = $423K total. Brief targets no longer applicable after platform causal rebuild.
 - [x] Lailara Design System applied consistently (matches retailer-deduction-recovery visual standard)
 - [x] Deployed to Cloudflare Workers and accessible at a public URL
 - [x] Data paranoia: all data is synthetic Cinderhaven, no real client data anywhere

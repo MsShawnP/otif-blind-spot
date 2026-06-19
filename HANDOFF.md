@@ -109,3 +109,15 @@ about synthetic Walmart scorecard data remains open).
 **Next:** Arc is done — nothing pending. Good starting points: `/improve` on the project, scope the next Lailara workstream, or start a new portfolio piece.
 
 ---
+
+## 2026-06-19 20:30 — Session close
+
+**Started from:** Arc complete and shipped. Resumed mid-task from context restore — three UI changes in progress (preset selector, audit sheet nowrap, shared window state). Data pipeline exports and type definitions already done; computeMetrics.ts was next.
+
+**Did:** Created `computeMetrics.ts` (client-side metric recomputation mirroring Python pipeline). Rewrote `App.tsx` with window state, `WindowPresetBar`, computed data flow to both tabs. Fixed EDI Audit Sheet: removed table-layout:fixed/colgroup/width percentages, added white-space:nowrap on date/PO columns, widened container by moving max-width from `.app-main` to `.reconciliation-view`. Built, deployed, committed (`1deaf10`), pushed. Analyzed synthetic OTIF plausibility — 62% in-full is unrealistically low (median shortfall 28% of PO). Flagged data tuning for cinderhaven-data-platform session.
+
+**State:** All features working and deployed at otif.lailarallc.com. Preset buttons (13w/26w/52w/full) filter all figures client-side. Audit sheet uses full page width, no horizontal scroll. Two DECISIONS.md entries superseded (table-layout:fixed and colgroup-driven). Spawned task chip for data platform to tune failure rates.
+
+**Next:** No code work pending on otif-blind-spot. Deferred: (1) CINDERHAVEN_CANONICAL.md update batched with short-ship-cost, (2) README narrative prose awaiting Shawn's replacement text, (3) .env revert to prod is separate deliberate step. Data plausibility fix lives in cinderhaven-data-platform (spawned task). Project due for `/improve` review (last was 2026-05-31, next due 2026-06-30).
+
+---
