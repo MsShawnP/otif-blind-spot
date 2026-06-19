@@ -40,7 +40,6 @@
 /* ─── App main content area ────────────────────────────────────────────────── */
 
 .app-main {
-  max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 48px var(--page-padding-x) var(--section-gap);
 }
@@ -131,6 +130,47 @@
   .headline-hook__gap {
     font-size: 16px;
   }
+}
+
+/* ─── Window preset bar ──────────────────────────────────────────────────── */
+
+.window-preset-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 16px var(--page-padding-x) 0;
+}
+
+.window-preset-btn {
+  padding: 6px 14px;
+  background: none;
+  border: 1px solid var(--color-gridline);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  transition: border-color 150ms, color 150ms;
+}
+
+.window-preset-btn:hover {
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+}
+
+.window-preset-btn--active {
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+  font-weight: 600;
+  background-color: var(--color-info-bg);
+}
+
+.window-preset-btn:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
 }
 
 /* ─── Accessibility utility ─────────────────────────────────────────────── */

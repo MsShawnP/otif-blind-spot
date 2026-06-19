@@ -65,3 +65,16 @@ export interface AuditRow {
   otif_fine: number
   retailer_penalty_flag: boolean
 }
+
+export interface PortfolioShipment {
+  ship_date: string | null
+  units_ordered: number
+  units_shipped: number
+}
+
+export interface ChargebackRow {
+  retailer: string
+  reason: string
+  amount: number
+  month: string
+}

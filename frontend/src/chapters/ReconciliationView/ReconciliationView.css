@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--section-gap);
+  max-width: var(--content-max-width);
 }
 
 /* ─── Section ──────────────────────────────────────────────────────────────── */
@@ -223,7 +224,7 @@
   font-weight: 700;
   color: var(--color-ink);
   letter-spacing: -0.01em;
-  line-height: 1;
+  line-height: 1.15;
 }
 
 .kpi-tile__label {
@@ -243,12 +244,6 @@
 
 .kpi-tile--velocity {
   background: var(--color-warn-bg);
-  flex: 1.5;
-  max-width: 300px;
-}
-
-.kpi-tile--velocity .kpi-tile__value--large {
-  font-size: 40px;
 }
 
 .kpi-tile--total {
@@ -258,6 +253,7 @@
 /* ─── Source badges (measured vs modeled) ───────────────────────────────────── */
 
 .source-badge {
+  display: inline-block;
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 600;
@@ -265,8 +261,9 @@
   letter-spacing: 0.06em;
   padding: 2px 8px;
   border-radius: 3px;
-  align-self: flex-start;
   line-height: 1.4;
+  vertical-align: middle;
+  margin-left: 6px;
 }
 
 .source-badge--platform {
@@ -287,9 +284,5 @@
 
   .kpi-tile {
     min-width: 140px;
-  }
-
-  .kpi-tile--velocity .kpi-tile__value--large {
-    font-size: 32px;
   }
 }

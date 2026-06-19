@@ -217,14 +217,12 @@ function ExposureSection({ exposure }: { exposure: Exposure }) {
   return (
     <div className="kpi-row">
       <div className="kpi-tile">
-        <SourceBadge source={exposure.fines_source} />
         <span className="kpi-tile__value">{formatDollars(exposure.annual_fines)}</span>
-        <span className="kpi-tile__label">annual OTIF fines (3% of COGS on penalized shipments)</span>
+        <span className="kpi-tile__label">annual OTIF fines <SourceBadge source={exposure.fines_source} /></span>
       </div>
       <div className="kpi-tile kpi-tile--velocity">
-        <SourceBadge source={exposure.velocity_source} />
-        <span className="kpi-tile__value kpi-tile__value--large">{formatDollars(exposure.annual_velocity_damage)}</span>
-        <span className="kpi-tile__label">estimated velocity damage from empty shelves ($3.50/unit assumption)</span>
+        <span className="kpi-tile__value">{formatDollars(exposure.annual_velocity_damage)}</span>
+        <span className="kpi-tile__label">estimated velocity damage ($3.50/unit) <SourceBadge source={exposure.velocity_source} /></span>
       </div>
       <div className="kpi-tile kpi-tile--total">
         <span className="kpi-tile__value">{formatDollars(exposure.total_exposure)}</span>

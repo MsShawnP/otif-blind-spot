@@ -344,6 +344,31 @@ def build_audit_rows(shipments: list[dict]) -> list[dict]:
     return rows
 
 
+def build_portfolio_shipments(shipments: list[dict]) -> list[dict]:
+    """Lightweight per-shipment data for client-side window filtering."""
+    return [
+        {
+            "ship_date": s.get("ship_date"),
+            "units_ordered": s["units_ordered"],
+            "units_shipped": s["units_shipped"],
+        }
+        for s in shipments
+    ]
+
+
+def build_chargebacks_export(chargebacks: list[dict]) -> list[dict]:
+    """Per-chargeback data for client-side window filtering."""
+    return [
+        {
+            "retailer": cb.get("retailer"),
+            "reason": cb["reason"],
+            "amount": cb["amount"],
+            "month": cb["month"],
+        }
+        for cb in chargebacks
+    ]
+
+
 def main():
     os.makedirs(DATA_OUT_DIR, exist_ok=True)
 
@@ -392,6 +417,8 @@ def main():
         "true_fill.json": true_fill,
         "exposure.json": exposure,
         "audit_rows.json": audit_rows,
+        "portfolio_shipments.json": build_portfolio_shipments(shipments),
+        "chargebacks.json": build_chargebacks_export(data["chargebacks"]),
     }
 
     print(f"\nExporting to {DATA_OUT_DIR}...", flush=True)
