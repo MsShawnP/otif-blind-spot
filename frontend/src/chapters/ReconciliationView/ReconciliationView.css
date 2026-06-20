@@ -211,7 +211,8 @@
   flex-direction: column;
   gap: 8px;
   padding: 24px;
-  background: var(--color-hk-95);
+  background: #ffffff;
+  border-left: 4px solid #158f75;
   border-radius: var(--border-radius);
   min-width: 160px;
   flex: 1;
@@ -235,19 +236,19 @@
 }
 
 .kpi-tile--accent {
-  background: var(--color-info-bg);
+  border-left-color: #1f2e7a;
 }
 
 .kpi-tile--delta {
-  background: var(--color-warn-bg);
+  border-left-color: #ee8a2a;
 }
 
 .kpi-tile--velocity {
-  background: var(--color-warn-bg);
+  border-left-color: #ee8a2a;
 }
 
 .kpi-tile--total {
-  background: var(--color-fail-bg);
+  border-left-color: #cc100a;
 }
 
 /* ─── Source badges (measured vs modeled) ───────────────────────────────────── */

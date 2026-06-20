@@ -123,11 +123,11 @@
 
 /* Failure row highlighting */
 .audit-row--single-fail {
-  border-left: 3px solid var(--color-red);
+  border-left: 4px solid var(--color-red);
 }
 
 .audit-row--single-fail .audit-td:first-child {
-  padding-left: 9px;
+  padding-left: 8px;
 }
 
 .audit-row--both-fail {
