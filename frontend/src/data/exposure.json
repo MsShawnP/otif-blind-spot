@@ -1,99 +1,99 @@
 {
-  "annual_fines": 55002.41,
+  "annual_fines": 23696.78,
   "fines_source": "platform",
-  "annual_velocity_damage": 368098.5,
+  "annual_velocity_damage": 33499.67,
   "velocity_source": "modeled",
-  "total_exposure": 423100.91,
+  "total_exposure": 57196.45,
   "fines_by_quarter": [
     {
       "quarter": "2023-Q1",
-      "fines": 9333.51
+      "fines": 3758.22
     },
     {
       "quarter": "2023-Q2",
-      "fines": 10156.02
+      "fines": 5001.64
     },
     {
       "quarter": "2023-Q3",
-      "fines": 14289.69
+      "fines": 5827.95
     },
     {
       "quarter": "2023-Q4",
-      "fines": 20268.81
+      "fines": 7741.51
     },
     {
       "quarter": "2024-Q1",
-      "fines": 10340.82
+      "fines": 5366.46
     },
     {
       "quarter": "2024-Q2",
-      "fines": 10567.92
+      "fines": 4394.58
     },
     {
       "quarter": "2024-Q3",
-      "fines": 12540.42
+      "fines": 5981.37
     },
     {
       "quarter": "2024-Q4",
-      "fines": 20350.96
+      "fines": 8199.98
     },
     {
       "quarter": "2025-Q1",
-      "fines": 9893.86
+      "fines": 4251.04
     },
     {
       "quarter": "2025-Q2",
-      "fines": 13892.16
+      "fines": 4626.67
     },
     {
       "quarter": "2025-Q3",
-      "fines": 12055.53
+      "fines": 5993.03
     },
     {
       "quarter": "2025-Q4",
-      "fines": 21317.52
+      "fines": 9947.89
     }
   ],
   "velocity_by_sku": [
     {
-      "order_id": "RO-022375",
-      "velocity_damage": 1680.0
+      "order_id": "RO-029148",
+      "velocity_damage": 686.0
     },
     {
-      "order_id": "RO-011983",
-      "velocity_damage": 1592.5
+      "order_id": "RO-032574",
+      "velocity_damage": 591.5
     },
     {
-      "order_id": "RO-010698",
-      "velocity_damage": 1449.0
+      "order_id": "RO-032339",
+      "velocity_damage": 584.5
     },
     {
-      "order_id": "RO-007247",
-      "velocity_damage": 1445.5
+      "order_id": "RO-046088",
+      "velocity_damage": 570.5
     },
     {
-      "order_id": "RO-045623",
-      "velocity_damage": 1431.5
+      "order_id": "RO-023846",
+      "velocity_damage": 563.5
     },
     {
-      "order_id": "RO-014417",
-      "velocity_damage": 1403.5
+      "order_id": "RO-019013",
+      "velocity_damage": 560.0
     },
     {
-      "order_id": "RO-030945",
-      "velocity_damage": 1393.0
+      "order_id": "RO-030512",
+      "velocity_damage": 553.0
     },
     {
-      "order_id": "RO-039360",
-      "velocity_damage": 1365.0
+      "order_id": "RO-011627",
+      "velocity_damage": 549.5
     },
     {
-      "order_id": "RO-002918",
-      "velocity_damage": 1361.5
+      "order_id": "RO-046101",
+      "velocity_damage": 546.0
     },
     {
-      "order_id": "RO-036847",
-      "velocity_damage": 1323.0
+      "order_id": "RO-011643",
+      "velocity_damage": 542.5
     }
   ]
 }

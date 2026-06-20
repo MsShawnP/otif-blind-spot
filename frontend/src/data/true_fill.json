@@ -1,7 +1,7 @@
 {
-  "fill_vs_855": 0.8941,
-  "fill_vs_850": 0.8874,
-  "trimming_gap_pts": 0.67,
-  "orders_with_trimming": 1835,
-  "pct_orders_trimmed": 0.1813
+  "fill_vs_855": 0.9906,
+  "fill_vs_850": 0.9898,
+  "trimming_gap_pts": 0.08,
+  "orders_with_trimming": 249,
+  "pct_orders_trimmed": 0.0246
 }

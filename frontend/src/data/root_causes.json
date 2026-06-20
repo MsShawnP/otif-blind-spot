@@ -3,25 +3,25 @@
     "cause": "short_ship",
     "label": "Short-ship",
     "failure_mode": "in_full",
-    "gap_pts": 17.58,
-    "shipment_count": 2300,
-    "pct_of_gap": 0.5745
-  },
-  {
-    "cause": "receiving_discrepancy",
-    "label": "Receiving discrepancy",
-    "failure_mode": "in_full",
-    "gap_pts": 11.27,
-    "shipment_count": 1474,
-    "pct_of_gap": 0.3683
+    "gap_pts": 10.66,
+    "shipment_count": 1154,
+    "pct_of_gap": 0.7212
   },
   {
     "cause": "warehouse_late",
     "label": "Warehouse late",
     "failure_mode": "on_time",
-    "gap_pts": 1.75,
+    "gap_pts": 2.12,
     "shipment_count": 229,
-    "pct_of_gap": 0.0572
+    "pct_of_gap": 0.1434
+  },
+  {
+    "cause": "receiving_discrepancy",
+    "label": "Receiving discrepancy",
+    "failure_mode": "in_full",
+    "gap_pts": 2.0,
+    "shipment_count": 216,
+    "pct_of_gap": 0.1353
   },
   {
     "cause": "carrier_late",
