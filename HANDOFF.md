@@ -121,3 +121,19 @@ about synthetic Walmart scorecard data remains open).
 **Next:** No code work pending on otif-blind-spot. Deferred: (1) CINDERHAVEN_CANONICAL.md update batched with short-ship-cost, (2) README narrative prose awaiting Shawn's replacement text, (3) .env revert to prod is separate deliberate step. Data plausibility fix lives in cinderhaven-data-platform (spawned task). Project due for `/improve` review (last was 2026-05-31, next due 2026-06-30).
 
 ---
+
+## 2026-06-23 — Pre-demo verification and exposure scope label
+
+**Started from:** Post data-platform tuning. Canonical figures: 99.2% internal / 84.5% Walmart OTIF / 14.8pt gap / $57K total exposure. Stale figures scattered across README, CLAUDE.md, PLAN.md, index.html meta tags.
+
+**Did:**
+1. **Stale figure grep** — found old figures (92%/61%/95%/86%/$55K/$368K/$423K) in README, CLAUDE.md, PLAN.md, index.html meta tags. Data JSON files confirmed matching canonical.
+2. **Updated all stale figures** (`86efd1a`) — README tables, headline, root causes, exposure, overlap note. CLAUDE.md and PLAN.md business questions. Meta/OG/Twitter descriptions from 95%/86% to 99%/85%. og:url from workers.dev to otif.lailarallc.com. Removed per-retailer table (no per-retailer data in current pipeline).
+3. **Exposure pin and revert** — initially pinned exposure to full-corpus static data (`b81e7a9`) to fix $59K vs $57K discrepancy on 52w default. User requested revert — exposure should float with window. Reverted (`8d02d99`), added scope footnote ("Annualized from last N weeks." / "Annualized from full observation period.") under exposure cards.
+4. **Verified** all four presets (13w/26w/52w/full) show internally consistent fines + velocity = total. Scope label updates with each selection.
+
+**State:** All figures canonical across repo. Exposure floats with window preset, scope label communicates the annualization period. Deployed to Cloudflare, pushed to main. No broken states.
+
+**Next:** No code work pending. Deferred: (1) CINDERHAVEN_CANONICAL.md update batched with short-ship-cost, (2) README narrative prose awaiting Shawn's replacement text, (3) .env revert to prod is separate deliberate step. Project due for `/improve` review (last was 2026-05-31, next due 2026-06-30).
+
+---
