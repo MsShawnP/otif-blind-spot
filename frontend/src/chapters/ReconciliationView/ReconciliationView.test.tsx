@@ -35,6 +35,7 @@ function renderView() {
       rootCauses={rootCauses}
       trueFill={trueFill}
       exposure={exposure}
+      exposureScope="Annualized from full observation period (Jan 2023 – Dec 2025)."
     />
   )
 }

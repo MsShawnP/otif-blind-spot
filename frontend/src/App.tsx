@@ -6,15 +6,18 @@ import {
   exposure as fullExposure,
   auditRows,
   portfolioShipments,
+  chargebackRows,
 } from './data'
 import {
   WINDOW_PRESETS,
   DEFAULT_PRESET_KEY,
   presetToRange,
   filterByShipDate,
+  filterChargebacks,
   computeSummary,
   computeRootCauses,
   computeTrueFill,
+  computeExposure,
 } from './computeMetrics'
 import type { Summary } from './types'
 import { ChapterNav } from './components/ChapterNav'
@@ -95,12 +98,14 @@ function App() {
 
     const filteredPortfolio = filterByShipDate(portfolioShipments, range)
     const filteredAudit = filterByShipDate(auditRows, range)
+    const filteredChargebacks = filterChargebacks(chargebackRows, range)
 
     const summary = computeSummary(filteredAudit, filteredPortfolio, range)
     const rootCauses = computeRootCauses(filteredAudit, summary)
     const trueFill = computeTrueFill(filteredAudit)
+    const exposure = computeExposure(filteredAudit, filteredChargebacks, range)
 
-    return { summary, rootCauses, trueFill, exposure: fullExposure, filteredAudit }
+    return { summary, rootCauses, trueFill, exposure, filteredAudit }
   }, [presetKey])
 
   return (
@@ -132,6 +137,9 @@ function App() {
             rootCauses={computed.rootCauses}
             trueFill={computed.trueFill}
             exposure={computed.exposure}
+            exposureScope={presetKey === 'all'
+              ? 'Annualized from full observation period (Jan 2023 – Dec 2025).'
+              : `Annualized from last ${WINDOW_PRESETS.find(p => p.key === presetKey)!.weeks} weeks.`}
           />
         )}
         {chapter === 2 && (

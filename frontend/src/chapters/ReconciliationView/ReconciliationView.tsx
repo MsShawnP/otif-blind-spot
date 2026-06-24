@@ -16,6 +16,7 @@ interface ReconciliationViewProps {
   rootCauses: RootCause[]
   trueFill: TrueFill
   exposure: Exposure
+  exposureScope: string
 }
 
 // ─── Move 1: Dual-dock comparison ────────────────────────────────────────────
@@ -234,7 +235,7 @@ function ExposureSection({ exposure }: { exposure: Exposure }) {
 
 // ─── Main view ────────────────────────────────────────────────────────────────
 
-export function ReconciliationView({ summary, rootCauses, trueFill, exposure }: ReconciliationViewProps) {
+export function ReconciliationView({ summary, rootCauses, trueFill, exposure, exposureScope }: ReconciliationViewProps) {
   return (
     <div className="reconciliation-view">
 
@@ -285,6 +286,7 @@ export function ReconciliationView({ summary, rootCauses, trueFill, exposure }: 
           The fine is visible. The velocity damage — revenue lost while shelves were empty — is larger and invisible.
         </p>
         <ExposureSection exposure={exposure} />
+        <p className="recon-footnote">{exposureScope}</p>
       </section>
 
     </div>
