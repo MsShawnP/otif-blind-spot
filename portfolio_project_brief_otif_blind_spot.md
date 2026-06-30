@@ -170,14 +170,14 @@ The piece reconciles two sources the brand already has but never joins: the reta
 
 ### 8. Cinderhaven Integration
 
-Cinderhaven's internal dashboards show a 95% fill rate. Walmart's supplier scorecard shows 86% OTIF. The reconciliation reveals:
+Cinderhaven's internal dashboards show a 99.2% fill rate. Walmart's supplier scorecard shows 84.5% OTIF. The reconciliation reveals:
 
-- **The 9-point gap splits 5/4:** ~5 points are on-time failures (the carrier missing must-arrive-by-date appointment windows) and ~4 points are in-full failures (production short-ships).
-- **The brand had been fixing logistics** — but nearly half the problem was production. The remediation effort was aimed at the wrong failure mode.
-- **True fill against original demand is lower still:** Cinderhaven trims order lines it can't fill before acknowledging, so its "95%" is measured against a reduced base. Against the original POs, true fill is ~91%.
-- **Exposure:** ~$140K/year in OTIF fines, plus an estimated ~$320K/year in velocity damage from the empty-shelf periods the in-full failures created.
+- **The 14.8-point gap is overwhelmingly in-full:** ~2 points are on-time failures (the carrier missing must-arrive-by-date appointment windows) and ~13 points are in-full failures (production short-ships).
+- **The brand had been fixing logistics** — but almost the entire problem was production. The remediation effort was aimed at the wrong failure mode.
+- **True fill against original demand is lower still:** Cinderhaven trims order lines it can't fill before acknowledging, so its high internal number is measured against a reduced base. Against the original POs, true fill is lower.
+- **Exposure:** ~$23.7K/year in measured OTIF fines, plus ~$33.5K/year in modeled velocity damage from the empty-shelf periods the in-full failures created — **~$57K/year total**.
 
-Headline: **Cinderhaven thought it was at 95% and fixing the right problem. It was at 86%, fixing the wrong one, and the OTIF blind spot was a ~$460K/year problem hiding behind a number measured at the wrong dock.**
+Headline: **Cinderhaven thought it was at 99% and fixing the right problem. It was at 84.5% retailer-scored, fixing the wrong one, and the OTIF blind spot was a ~$57K/year problem hiding behind a number measured at the wrong dock.**
 
 Runs on the existing Cinderhaven Data Platform — joins the shipment, EDI, and PO marts, plus a synthetic Walmart OTIF scorecard layer. Consistent with the short-ship figures in The 150 Cases and the OOS events in Production Demand Forecast and Competitive Shelf Intelligence.
 
