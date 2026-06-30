@@ -6,15 +6,15 @@ import App from './App'
 describe('App', () => {
   it('renders without crashing', () => {
     render(<App />)
-    expect(screen.getByText('OTIF Blind Spot')).toBeInTheDocument()
+    expect(screen.getAllByText('OTIF Blind Spot').length).toBeGreaterThan(0)
   })
 
   it('shows headline numbers above the chapter nav', () => {
     const { container } = render(<App />)
     const hook = container.querySelector('.headline-hook')
     expect(hook).toBeTruthy()
-    expect(within(hook!).getByText('95%')).toBeInTheDocument()
-    expect(within(hook!).getByText('86%')).toBeInTheDocument()
+    expect(within(hook!).getByText('99%')).toBeInTheDocument()
+    expect(within(hook!).getByText('84%')).toBeInTheDocument()
   })
 
   it('renders two navigation tabs', () => {

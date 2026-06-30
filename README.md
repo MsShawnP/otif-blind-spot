@@ -65,9 +65,9 @@ Consumes the Cinderhaven Data Platform directly:
 50 SKUs, 6 retailers, 36-month window (2023–2025). Canonical
 reference: `CINDERHAVEN_CANONICAL.md`.
 
-**Overlap note:** OTIF fines include $36.2K/yr in short_ship
-chargebacks also counted in the short-ship-cost project. The
-canonical thesis range counts these once, under short-ship cost.
+**Overlap note:** Some short_ship failures surfaced here also appear in
+the short-ship-cost project (~$39.6K/yr in short_ship chargebacks). The
+canonical thesis range counts that overlap once, under short-ship cost.
 
 ## Stack
 

@@ -273,8 +273,9 @@ export function ReconciliationView({ summary, rootCauses, trueFill, exposure, ex
       <section className="recon-section" aria-labelledby="move4-title">
         <h2 className="recon-section__title" id="move4-title">True Fill Rate</h2>
         <p className="recon-section__framing">
-          Walmart trims POs via EDI 855 acknowledgment before shipment. Cinderhaven fills against the acknowledged quantity —
-          which makes fill rate look better than it is against original demand.
+          Walmart trims POs via EDI 855 acknowledgment, so we checked whether filling against the acknowledged quantity
+          inflates the reported number. It barely does — the gap against original demand is under a tenth of a point.
+          The real OTIF gap is short-shipping, not an accounting artifact.
         </p>
         <TrueFillSection trueFill={trueFill} />
       </section>
@@ -283,7 +284,8 @@ export function ReconciliationView({ summary, rootCauses, trueFill, exposure, ex
       <section className="recon-section" aria-labelledby="move5-title">
         <h2 className="recon-section__title" id="move5-title">Financial Exposure</h2>
         <p className="recon-section__framing">
-          The fine is visible. The velocity damage — revenue lost while shelves were empty — is larger and invisible.
+          The fines are small and measured (~$24K/yr); the velocity damage (~$34K/yr) is modeled, not measured.
+          Neither is the real cost — that's the deauthorization risk a 15-point scorecard gap invites, and it isn't priced here.
         </p>
         <ExposureSection exposure={exposure} />
         <p className="recon-footnote">{exposureScope}</p>

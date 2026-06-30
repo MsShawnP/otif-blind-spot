@@ -1,6 +1,6 @@
 # Portfolio Project Brief: OTIF Blind Spot
 
-**Working title:** *"You Think Your Fill Rate Is 96%. Walmart Says It's 86%."*
+**Working title:** *"You Think Your Fill Rate Is 99%. Walmart Says It's 84%."*
 
 **Repo (recommended):** `otif-blind-spot`
 
@@ -12,7 +12,7 @@
 
 ### 1. The Pain
 
-A specialty food brand's internal dashboard says it ships 96% of orders complete. The brand feels good about that number. Then a Walmart OTIF fine arrives, and the supplier scorecard says the brand's On-Time In-Full performance is 86%. The CEO is confused: how can we be at 96% and 86% at the same time?
+A specialty food brand's internal dashboard says it ships 99% of orders complete. The brand feels good about that number. Then a Walmart OTIF fine arrives, and the supplier scorecard says the brand's On-Time In-Full performance is 84%. The CEO is confused: how can we be at 99% and 84% at the same time?
 
 The answer is that they're two different numbers measured at two different docks, and the brand has only ever looked at one of them.
 
@@ -22,7 +22,7 @@ The most insidious of these is order trimming. When the warehouse is short on st
 
 That gap is the blind spot. And it's expensive:
 
-- **OTIF fines are material.** Walmart fines 3% of COGS on shipments that miss the threshold. Target, Kroger, and others run comparable programs. For a brand doing meaningful volume, that's six figures a year.
+- **OTIF fines are real, but rarely the biggest number.** Walmart fines 3% of COGS on shipments that miss the threshold. Target, Kroger, and others run comparable programs. Against realistic specialty-food fill rates the measured fines run tens of thousands a year (~$24K in the worked example) — material, but smaller than the velocity and shelf-position damage they sit next to.
 - **The scorecard affects survival, not just fines.** A poor OTIF score damages the brand's standing at category review. Buyers cut chronic OTIF offenders. The fine is the visible cost; the lost shelf position is the existential one.
 - **The brand is often fixing the wrong thing.** OTIF failures are either "on-time" failures (delivery was late) or "in-full" failures (shipped short) or both. Without decomposing them, the brand throws resources at logistics when the real problem is production short-ships — or vice versa. They're fixing blind.
 - **The rules are opaque.** Each retailer measures OTIF differently — what counts as on-time (appointment windows, MABD), what counts as in-full (line fill vs. case fill vs. unit fill), how the threshold is calculated. The brand is being graded against rules it has never read.
@@ -42,7 +42,7 @@ The brand watches its internal fill rate (measured at its own dock) and feels fi
 
 ### 2. Why This Piece
 
-**It reveals the gap nobody measures.** The "you think 96%, they say 86%" reframe is the hook — it exposes a blind spot the brand didn't know it had, on a metric that's costing them six figures and threatening their shelf position. That's the kind of "stop and rethink your business" moment a portfolio piece needs.
+**It reveals the gap nobody measures.** The "you think 99%, they say 84%" reframe is the hook — it exposes a blind spot the brand didn't know it had: a double-digit scorecard gap on the exact metric retailers use to decide who keeps shelf. The direct fines are modest; the deauthorization risk the gap signals is the existential cost. That's the kind of "stop and rethink your business" moment a portfolio piece needs.
 
 **It completes the short-ship workstream.** The practice has built around the short-ship doom loop. This is the missing measurement piece:
 - **OTIF Blind Spot** *reveals* how bad fill performance actually is and where the failures come from (diagnosis).
@@ -63,7 +63,7 @@ Three pieces, one loop, three angles. This one is the diagnostic that tells you 
 The heart of the piece: reconciling the two numbers and decomposing the gap.
 
 **Move 1 — Reconcile the two docks (the Dual-Dock framework).**
-Pull the retailer's OTIF scorecard (from the supplier portal) and reconcile it against the brand's own internal fulfillment logs. The Fulfillment Dock (brand internal, measured against acknowledged 855s) vs. the Consignee Dock (retailer receiving, measured against original 850s). Surface the headline gap: internal fill rate vs. retailer-measured OTIF. This single comparison — "you think 96%, they score you at 86%" — is the reveal. Most brands have never put the two numbers side by side.
+Pull the retailer's OTIF scorecard (from the supplier portal) and reconcile it against the brand's own internal fulfillment logs. The Fulfillment Dock (brand internal, measured against acknowledged 855s) vs. the Consignee Dock (retailer receiving, measured against original 850s). Surface the headline gap: internal fill rate vs. retailer-measured OTIF. This single comparison — "you think 99%, they score you at 84%" — is the reveal. Most brands have never put the two numbers side by side.
 
 **Move 2 — Decompose the gap into on-time vs. in-full.**
 Split the OTIF shortfall into its two components. How much of the gap is "on-time" failures (late deliveries, missed must-arrive-by-dates, missed appointment windows)? How much is "in-full" failures (shipped short, partial receipts)? This is the move that tells the brand whether its problem is logistics or production — the single most actionable output.
@@ -86,32 +86,32 @@ Together they show the brand, for the first time, how bad its fill performance a
 
 #### The Margin Math
 
-For a $25M brand with a 10-point gap between internal fill rate and retailer-scored OTIF:
+For the Cinderhaven worked example — a ~15-point gap between internal fill rate (99.2%) and Walmart-scored OTIF (84.5%):
 
-| Failure Category | Impact | Annual Profit Leak | Corrective Action |
+| Failure Category | Impact | Annual Measured Exposure | Corrective Action |
 |------------------|--------|:------------------:|-------------------|
-| On-time logistics lag | ~5-point score drop | $100K–$200K | Optimize carrier routing, adjust ship leads |
-| In-full product shortages | ~4-point score drop | $60K–$120K | Production forecast guardrails (→ Production Demand Forecast) |
-| Hidden shelf velocity loss | empty shelves | $200K–$500K | Recover lost distribution, protect shelf position |
-| **Total exposure** | **10-point blind spot** | **$360K–$800K** | **Turn ops metrics into retained profit** |
+| On-time logistics lag | ~2-point score drop | part of ~$24K in fines | Optimize carrier routing, adjust ship leads |
+| In-full product shortages | ~13-point score drop | part of ~$24K in fines | Production forecast guardrails (→ Production Demand Forecast) |
+| Shelf-velocity damage (modeled) | empty shelves | ~$34K | Recover lost distribution, protect shelf position |
+| **Total measured exposure** | **~15-point gap** | **~$57K** | **Turn ops metrics into retained profit** |
 
-- **Fines are the visible cost; velocity damage is the larger, invisible one.** The OTIF fine (3% of COGS on affected shipments) is real but usually smaller than the revenue lost from the empty shelves the in-full failures created.
+- **The measured dollars are modest; the gap is not.** The direct exposure (~$24K fines + ~$34K modeled velocity damage ≈ $57K/year) is real but small. The story isn't the fine total — it's a 15-point scorecard gap the brand never knew it had.
+- **The un-priced cost is the dangerous one.** Category-standing risk — deauthorization at the next review for a chronic OTIF offender — is unquantifiable but existential, and dwarfs the measured $57K when it lands.
 - **Misdirected remediation is pure waste.** Brands fixing the wrong failure mode (logistics when it's production, or vice versa) burn the remediation budget entirely. The decomposition redirects it to the actual problem.
-- **Category-standing risk** is unquantifiable but existential — a chronic OTIF offender risks delisting at the next review.
 
-**Total quantifiable exposure: $360K–$800K/year** at a $25M brand, most of it in the velocity damage the brand never attributes to OTIF — plus the un-priced risk to shelf position.
+**Total measured exposure: ~$57K/year** at the worked-example brand (~$24K fines + ~$34K modeled velocity) — plus the un-priced, and far larger when it lands, risk of deauthorization at category review.
 
 #### Before / After
 
-- **Before:** Internal dashboard says 96% fill. The team feels fine. OTIF fines arrive and get absorbed. The ops lead throws resources at logistics. Fines continue, because more than half the problem was production short-ships nobody decomposed. The brand trusts the wrong number and fixes the wrong thing.
+- **Before:** Internal dashboard says 99% fill. The team feels fine. OTIF fines arrive and get absorbed. The ops lead throws resources at logistics. Fines continue, because almost the entire gap was production short-ships nobody decomposed. The brand trusts the wrong number and fixes the wrong thing.
 
-- **After:** The reconciliation shows the real OTIF is 86%. The decomposition shows 4 of the 10 points are production short-ships, not logistics. The brand redirects effort to production, closes the in-full gap, and watches both the fines and the velocity damage fall. The CFO sees OTIF as a $500K problem, not a compliance footnote.
+- **After:** The reconciliation shows the real Walmart OTIF is 84.5%. The decomposition shows ~13 of the ~15 points are in-full production short-ships, not logistics. The brand redirects effort to production, closes the in-full gap, and watches the fines, the velocity damage, and — most importantly — the deauthorization risk fall. The CFO stops seeing OTIF as a compliance footnote and starts seeing it as a shelf-retention metric.
 
 #### Who Else Sees This?
 
 - **Primary:** COO / VP Ops (owns fulfillment), CFO (owns the fine line and now sees the velocity damage), the ops/logistics lead (gets told which failure mode to actually fix).
 - **Secondary:** CEO (OTIF as a shelf-position risk, not just a fine), the retailer's buyer (a brand that proactively fixes its OTIF is a better-regarded vendor).
-- **How it gets shared:** The ops lead brings the reconciliation to the COO: "We've been fixing logistics, but 4 of our 10 points are production." That single decomposition reorganizes the remediation plan. The CFO sees the velocity-damage number and reprioritizes.
+- **How it gets shared:** The ops lead brings the reconciliation to the COO: "We've been fixing logistics, but ~13 of our ~15 points are production." That single decomposition reorganizes the remediation plan. The CFO sees the velocity-damage number and reprioritizes.
 
 ---
 
@@ -142,7 +142,7 @@ The piece reconciles two sources the brand already has but never joins: the reta
   4. True fill rate against original demand (the order-trimming blind spot exposed)
   5. Dual exposure quantified — fines plus velocity damage
   6. A remediation priority that points at the *actual* failure mode, not the assumed one
-- **Why this piece sells it:** The reframe — "you think 96%, they score you at 86%" — is a claim the brand can immediately test against their own scorecard, and it's almost always true. Once they see the gap, they want the decomposition that tells them what to fix. The dual-exposure number (fines + velocity) justifies the fee several times over.
+- **Why this piece sells it:** The reframe — "you think 99%, they score you at 84%" — is a claim the brand can immediately test against their own scorecard, and it's almost always true. Once they see the gap, they want the decomposition that tells them what to fix. The dual-exposure number (fines + velocity) justifies the fee several times over.
 
 #### Client Lift
 
@@ -185,8 +185,8 @@ Runs on the existing Cinderhaven Data Platform — joins the shipment, EDI, and 
 
 ### 9. Tactical Notes
 
-- **Lead with the two numbers.** "You think 96%, they score you at 86%" is the entire hook. Open with it. The gap is the blind spot; everything else is explaining and pricing it.
-- **The on-time/in-full decomposition is the most actionable output — make it prominent.** Telling a brand "your OTIF is bad" is useless. Telling them "4 of your 10 points are production short-ships, not logistics" redirects their entire remediation effort. That split is the deliverable that earns the fee.
+- **Lead with the two numbers.** "You think 99%, they score you at 84%" is the entire hook. Open with it. The gap is the blind spot; everything else is explaining and pricing it.
+- **The on-time/in-full decomposition is the most actionable output — make it prominent.** Telling a brand "your OTIF is bad" is useless. Telling them "~13 of your ~15 points are production short-ships, not logistics" redirects their entire remediation effort. That split is the deliverable that earns the fee.
 - **Connect to velocity damage, not just fines.** The fines are real but often the smaller number. The empty-shelf velocity damage from the in-full failures is larger and invisible. Pricing both is what moves OTIF from an ops chore to a CFO priority — and ties this piece to the doom-loop theme running through the portfolio.
 - **The order-trimming blind spot is the subtle, credible finding.** Brands inflate their fill rate by trimming order lines they can't fill before acknowledging — so their internal number is measured against a base they've already shrunk. Surfacing "your true fill against the original PO is lower than your reported fill" is the kind of precise, slightly uncomfortable insight that signals the analysis is real.
 - **Computing true OTIF from EDI timestamps is the trust play.** Reconciling against the retailer's score is good; being able to *derive* on-time performance independently from the 856 and delivery records — and verify or challenge the retailer's number — is what makes the brand trust the diagnostic and what makes it dispute-ready.

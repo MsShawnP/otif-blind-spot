@@ -94,7 +94,7 @@ describe('deriveTrueFillComparison', () => {
 
 describe('ROOT_CAUSE_COLORS', () => {
   it('has entries for all 4 root causes', () => {
-    const causes = ['warehouse_late', 'carrier_late', 'production_short_ship', 'order_trimming']
+    const causes = ['warehouse_late', 'carrier_late', 'short_ship', 'receiving_discrepancy']
     for (const cause of causes) {
       expect(ROOT_CAUSE_COLORS[cause]).toBeDefined()
       expect(ROOT_CAUSE_COLORS[cause]).toMatch(/^#[0-9a-f]{6}$/i)
