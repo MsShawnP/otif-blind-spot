@@ -1,0 +1,44 @@
+project: otif-blind-spot
+base_url: https://otif.lailarallc.com
+
+routes:
+  - path: /
+    name: OTIF Reconciliation
+
+forbidden_content:
+  - pattern: "TODO|FIXME|HACK|XXX"
+    severity: warning
+    reason: Dev markers in production code
+  - pattern: "password\\s*=|api_key\\s*=|secret\\s*="
+    severity: fail
+    reason: Possible hardcoded credentials
+    exclude:
+      - "*.md"
+
+dom_checks:
+  - route: /
+    elements:
+      - selector: .lailara-header
+        label: Brand header present
+      - selector: .lailara-wordmark
+        label: Lailara wordmark link present
+      - selector: .headline-hook__pct
+        label: Headline fill rate number rendered
+      - selector: .chapter-nav
+        label: Chapter navigation present
+      - selector: "#move1-title"
+        label: Dual-Dock section heading rendered
+      - selector: .root-cause-bars
+        label: Root cause bar chart rendered
+      - selector: .kpi-row
+        label: KPI tiles rendered
+      - selector: .lailara-footer
+        label: Footer present
+    absent:
+      - selector: ".error-state"
+        label: No error state shown
+
+layout:
+  - route: /
+    assertions:
+      - type: no_horizontal_scroll

@@ -52,3 +52,6 @@ scripts/cache/*.json
 
 # Security - secret leak prevention
 *.pem
+
+# Verify run artifacts
+screenshots/
