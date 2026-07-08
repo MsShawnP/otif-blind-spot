@@ -38,7 +38,7 @@ function HeadlineHook({ summary }: { summary: Summary }) {
             <span className="headline-hook__pct">{formatPercent(summary.internal_fill_rate)}</span>
             <span className="headline-hook__label">
               Cinderhaven internal fill rate<br />
-              <span className="headline-hook__sublabel">measured at the shipping dock</span>
+              <span className="headline-hook__sublabel">all retailers, measured at the shipping dock</span>
             </span>
           </div>
 
