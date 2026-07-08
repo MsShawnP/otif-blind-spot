@@ -1,6 +1,6 @@
 # OTIF Blind Spot — Cinderhaven Provisions
 
-Your fill rate says 99%. Walmart scores you at 85%. This tool shows where the 15-point gap comes from and what it costs.
+Your fill rate says 99%. Walmart scores you at 84%. This tool shows where the 14.8-point gap comes from and what it costs.
 
 **Live:** https://otif.lailarallc.com
 
@@ -77,7 +77,7 @@ Consumes the Cinderhaven Data Platform directly:
 
 ## What this replaced
 
-This tool previously synthesized OTIF events and normalized outputs to match hardcoded targets (95% internal / 86% retailer-scored / $433K exposure). The normalization layer overrode what the data actually said. The rebuild stripped it, pointed the pipeline at platform causal fulfillment events, and let the data produce the scores. The gap turned out to be 15 points, not 10 — still a significant finding, and the honest one.
+This tool previously synthesized OTIF events and normalized outputs to match hardcoded targets (95% internal / 86% retailer-scored / $433K exposure). The normalization layer overrode what the data actually said. The rebuild stripped it, pointed the pipeline at platform causal fulfillment events, and let the data produce the scores. The gap turned out to be 14.8 points, not 10 — still a significant finding, and the honest one.
 
 ## License
 
