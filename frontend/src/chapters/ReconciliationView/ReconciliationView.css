@@ -184,6 +184,11 @@
   padding: 0 0 0 12px;
 }
 
+.pin-card__close:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}
+
 .pin-card__pts {
   font-family: var(--font-serif);
   font-size: 24px;

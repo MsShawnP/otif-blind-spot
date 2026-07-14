@@ -196,6 +196,11 @@
   background-color: var(--color-navy-hover);
 }
 
+.audit-page-btn:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}
+
 .audit-page-btn:disabled {
   background-color: var(--color-disabled);
   cursor: default;
