@@ -154,25 +154,37 @@ export function AuditSheetView({ rows }: AuditSheetViewProps) {
         <table className="audit-table">
           <thead>
             <tr>
-              {COLUMNS.map((col) => (
-                <th
-                  key={col.key}
-                  className={`audit-th${col.sortable ? ' audit-th--sortable' : ''}${sortKey === col.key ? ' audit-th--sorted' : ''}`}
-                  onClick={col.sortable ? () => handleSort(col.key) : undefined}
-                  aria-sort={
-                    sortKey === col.key
-                      ? (sortDir === 'asc' ? 'ascending' : 'descending')
-                      : undefined
-                  }
-                >
-                  {col.label}
-                  {col.sortable && (
-                    <span className="sort-chevron" aria-hidden="true">
-                      {sortKey === col.key ? (sortDir === 'asc' ? ' ▲' : ' ▼') : ' ⬦'}
-                    </span>
-                  )}
-                </th>
-              ))}
+              {COLUMNS.map((col) => {
+                const isSorted = sortKey === col.key
+                return (
+                  <th
+                    key={col.key}
+                    className={`audit-th${col.sortable ? ' audit-th--sortable' : ''}${isSorted ? ' audit-th--sorted' : ''}`}
+                    aria-sort={
+                      !col.sortable
+                        ? undefined
+                        : isSorted
+                          ? (sortDir === 'asc' ? 'ascending' : 'descending')
+                          : 'none'
+                    }
+                  >
+                    {col.sortable ? (
+                      <button
+                        type="button"
+                        className="audit-th-btn"
+                        onClick={() => handleSort(col.key)}
+                      >
+                        {col.label}
+                        <span className="sort-chevron" aria-hidden="true">
+                          {isSorted ? (sortDir === 'asc' ? ' ▲' : ' ▼') : ' ⬦'}
+                        </span>
+                      </button>
+                    ) : (
+                      col.label
+                    )}
+                  </th>
+                )
+              })}
             </tr>
           </thead>
           <tbody>
