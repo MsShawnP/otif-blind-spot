@@ -34,18 +34,19 @@ export interface TrueFillComparison {
 }
 
 export function deriveDecompositionBars(summary: Summary): DecompositionBar[] {
-  const total = summary.gap_pts || 9
+  const total = summary.gap_pts
+  const share = (pts: number) => (total > 0 ? pts / total : 0)
   return [
     {
       label: 'On-time failures',
       pts: summary.ontime_gap_pts,
-      pct: summary.ontime_gap_pts / total,
+      pct: share(summary.ontime_gap_pts),
       failure_mode: 'on_time',
     },
     {
       label: 'In-full failures',
       pts: summary.infull_gap_pts,
-      pct: summary.infull_gap_pts / total,
+      pct: share(summary.infull_gap_pts),
       failure_mode: 'in_full',
     },
   ]

@@ -84,10 +84,9 @@ function DualDockChart({ summary }: { summary: Summary }) {
 
 function DecompositionChart({ summary }: { summary: Summary }) {
   const bars = deriveDecompositionBars(summary)
-  const total = summary.gap_pts || 9
 
   return (
-    <div className="decomp-bar-wrap" data-decomp-total={total}>
+    <div className="decomp-bar-wrap">
       {bars.map((bar) => (
         <div key={bar.failure_mode} className={`decomp-segment decomp-segment--${bar.failure_mode}`}>
           <div
