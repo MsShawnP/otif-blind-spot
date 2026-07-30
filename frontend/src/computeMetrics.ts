@@ -1,4 +1,4 @@
-import type { Summary, RootCause, TrueFill, Exposure, AuditRow, PortfolioShipment, ChargebackRow } from './types'
+import type { Summary, RootCause, RootCauseKey, TrueFill, Exposure, AuditRow, PortfolioShipment, ChargebackRow } from './types'
 
 const VELOCITY_DAMAGE_PER_UNIT = 3.50
 
@@ -128,7 +128,7 @@ export function computeRootCauses(
     return round2((counts[cause] || 0) / totalModeFails * modeGap)
   }
 
-  const definitions: Array<{ cause: string; mode: 'on_time' | 'in_full'; label: string }> = [
+  const definitions: Array<{ cause: RootCauseKey; mode: 'on_time' | 'in_full'; label: string }> = [
     { cause: 'warehouse_late', mode: 'on_time', label: 'Warehouse late' },
     { cause: 'carrier_late', mode: 'on_time', label: 'Carrier late' },
     { cause: 'short_ship', mode: 'in_full', label: 'Short-ship' },

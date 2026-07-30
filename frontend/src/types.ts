@@ -12,8 +12,10 @@ export interface Summary {
   window_end: string
 }
 
+export type RootCauseKey = 'warehouse_late' | 'carrier_late' | 'short_ship' | 'receiving_discrepancy'
+
 export interface RootCause {
-  cause: string
+  cause: RootCauseKey
   label: string
   failure_mode: 'on_time' | 'in_full'
   gap_pts: number

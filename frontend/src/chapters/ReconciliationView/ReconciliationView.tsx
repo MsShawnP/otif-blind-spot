@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import * as Plot from '@observablehq/plot'
-import type { Summary, RootCause, TrueFill, Exposure } from '../../types'
+import type { Summary, RootCause, RootCauseKey, TrueFill, Exposure } from '../../types'
 import { PlotChart } from '../../components/PlotChart'
 import { formatPercent, formatPts, formatDollars } from '../../utils/format'
 import {
@@ -125,7 +125,7 @@ function RootCauseSection({ rootCauses }: { rootCauses: RootCause[] }) {
     return () => document.removeEventListener('mousedown', handleClick)
   }, [])
 
-  const implications: Record<string, string> = {
+  const implications: Record<RootCauseKey, string> = {
     warehouse_late:        'ASN was filed late — fix warehouse release process.',
     carrier_late:          'Carrier missed delivery window — audit carrier SLAs.',
     short_ship:            'Brand shipped fewer units than ordered — production or allocation shortfall.',

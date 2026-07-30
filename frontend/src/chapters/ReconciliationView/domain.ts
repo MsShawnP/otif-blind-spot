@@ -1,7 +1,7 @@
-import type { Summary, RootCause, TrueFill } from '../../types'
+import type { Summary, RootCause, TrueFill, RootCauseKey } from '../../types'
 
 // Lailara Design System v2 hex values — CSS vars don't work in SVG fill attributes
-export const ROOT_CAUSE_COLORS: Record<string, string> = {
+export const ROOT_CAUSE_COLORS: Record<RootCauseKey, string> = {
   warehouse_late:        '#158f75',  // --color-hk-35
   carrier_late:          '#6dcdb5',  // --color-hk-70
   short_ship:            '#ee8a2a',  // --color-sg-55
@@ -16,7 +16,7 @@ export interface DecompositionBar {
 }
 
 export interface RootCauseBar {
-  cause: string
+  cause: RootCauseKey
   label: string
   failure_mode: 'on_time' | 'in_full'
   gap_pts: number
