@@ -40,7 +40,7 @@ The tool distinguishes two cost types:
 
 Brands manage to the metric they can see — internal fill rate — while retailers fine and delist against the metric they score — OTIF. A brand can believe it is a 99% performer while its largest customer scores it in penalty territory. The fines are the visible cost; the compounding cost is shelf-velocity damage and the deauthorization conversation that follows a bad scorecard. Making the gap visible, attributable, and priced turns "Walmart says we're failing" from a dispute into a fixable operations list, ranked by dollar impact.
 
-## Quick start
+## Run
 
 ```bash
 cd frontend
@@ -55,21 +55,21 @@ flyctl proxy 5432 -a cinderhaven-db   # in another terminal
 python scripts/run_pipeline.py        # runs 00_query_cinderhaven.py then 02_export_json.py
 ```
 
-## Tech stack
+## Stack
 
 - **Frontend:** React, TypeScript, Vite
-- **Charts:** D3 / custom SVG
+- **Charts:** Observable Plot (SVG)
 - **Data pipeline:** Python → JSON from platform Postgres
-- **Deployment:** Cloudflare Pages
+- **Deployment:** Cloudflare Workers
 
 ## Data contract
 
 Consumes the Cinderhaven Data Platform directly:
 
-- `fct_retailer_shipment_lines` — units ordered vs shipped
+- `fct_retailer_shipments` / `fct_retailer_orders` — shipment timing and PO context for on-time scoring
+- `fct_retailer_shipment_lines` — units ordered vs shipped (fill data)
 - `fct_retailer_receipt_lines` — units received vs shipped (receiving discrepancies)
-- `raw.retailer_chargebacks` where reason in (short_ship, late_delivery, receiving_discrepancy)
-- `raw.retailer_orders` — delivery timing for on-time scoring
+- `fct_chargebacks` where reason in (short_ship, late_delivery, receiving_discrepancy)
 
 50 SKUs, 6 retailers, 36-month window (2023–2025). Canonical reference: `CINDERHAVEN_CANONICAL.md`.
 

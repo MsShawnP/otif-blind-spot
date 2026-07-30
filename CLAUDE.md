@@ -12,11 +12,11 @@ Medium — standard workflow: `/clarify`, `/ce:brainstorm`, `/ce:plan`, `/ce:wor
 
 ## Stack and tools
 
-- Primary language: TBD (scoped during planning)
-- Key packages/libraries: TBD
+- Primary language: TypeScript/React (frontend) + Python (data pipeline)
+- Key packages/libraries: React 19, Vite, Observable Plot, Vitest (frontend); psycopg2 (pipeline)
 - Platform: Cinderhaven Data Platform (shipment, EDI, PO marts + synthetic Walmart OTIF scorecard layer)
-- Entry point: TBD
-- Other tools: TBD
+- Entry point: `frontend/src/main.tsx` (app); `scripts/run_pipeline.py` (data regen)
+- Other tools: Wrangler (Cloudflare Workers deploy), pre-commit + gitleaks (secret scanning)
 
 ## Project files
 
