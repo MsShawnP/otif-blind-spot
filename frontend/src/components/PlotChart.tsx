@@ -10,12 +10,6 @@ interface PlotChartProps {
   className?: string
   /** Accessible label shown to screen readers via aria-label */
   ariaLabel?: string
-  /**
-   * Optional title text injected as a <title> element inside the SVG.
-   * When provided, also sets aria-labelledby on the SVG pointing to that element.
-   * More semantic than aria-label alone; preferred for chart SVGs.
-   */
-  svgTitle?: string
 }
 
 /**
@@ -31,7 +25,7 @@ interface PlotChartProps {
  *     ariaLabel="Contribution per unit by channel"
  *   />
  */
-export function PlotChart({ render, className, ariaLabel, svgTitle }: PlotChartProps) {
+export function PlotChart({ render, className, ariaLabel }: PlotChartProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -48,15 +42,6 @@ export function PlotChart({ render, className, ariaLabel, svgTitle }: PlotChartP
         chart.setAttribute('role', 'img')
         if (ariaLabel) {
           chart.setAttribute('aria-label', ariaLabel)
-        }
-        // Inject <title> element for richer screen-reader support
-        if (svgTitle) {
-          const titleId = `chart-title-${Math.random().toString(36).slice(2)}`
-          const titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title')
-          titleEl.id = titleId
-          titleEl.textContent = svgTitle
-          chart.insertBefore(titleEl, chart.firstChild)
-          chart.setAttribute('aria-labelledby', titleId)
         }
       }
       container.appendChild(chart)
