@@ -13,14 +13,12 @@ from __future__ import annotations
 
 import json
 import os
-from pathlib import Path
 
 import psycopg2
 import psycopg2.extras
 import psycopg2.extensions
-from dotenv import load_dotenv
 
-from otif_config import CACHE_DIR, PROJECT_ROOT, DATABASE_URL, WINDOW_START, WINDOW_END
+from otif_config import CACHE_DIR, DATABASE_URL, WINDOW_START, WINDOW_END
 
 DEC2FLOAT = psycopg2.extensions.new_type(
     psycopg2.extensions.DECIMAL.values,
@@ -30,18 +28,9 @@ DEC2FLOAT = psycopg2.extensions.new_type(
 psycopg2.extensions.register_type(DEC2FLOAT)
 
 
-def _load_env():
-    env_path = Path(PROJECT_ROOT) / ".env"
-    if not env_path.exists():
-        env_path = Path(PROJECT_ROOT).parent / ".env"
-    if env_path.exists():
-        load_dotenv(env_path)
-
-
 def get_conn():
-    _load_env()
-    url = os.environ.get("DATABASE_URL", DATABASE_URL)
-    conn = psycopg2.connect(url, cursor_factory=psycopg2.extras.RealDictCursor)
+    # .env is loaded and DATABASE_URL resolved once at otif_config import time.
+    conn = psycopg2.connect(DATABASE_URL, cursor_factory=psycopg2.extras.RealDictCursor)
     conn.cursor().execute(
         "SET search_path TO public_intermediate, public_staging, public_marts, raw, public"
     )
