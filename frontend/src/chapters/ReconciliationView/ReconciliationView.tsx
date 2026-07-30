@@ -284,8 +284,8 @@ export function ReconciliationView({ summary, rootCauses, trueFill, exposure, ex
       <section className="recon-section" aria-labelledby="move5-title">
         <h2 className="recon-section__title" id="move5-title">Financial Exposure</h2>
         <p className="recon-section__framing">
-          The fines are small and measured (~$24K/yr); the velocity damage (~$34K/yr) is modeled, not measured.
-          Neither is the real cost — that's the deauthorization risk a 14.8-point scorecard gap invites, and it isn't priced here.
+          The fines are small and measured ({formatDollars(exposure.annual_fines)}/yr); the velocity damage ({formatDollars(exposure.annual_velocity_damage)}/yr) is modeled, not measured.
+          Neither is the real cost — that's the deauthorization risk a {formatPts(summary.gap_pts)} scorecard gap invites, and it isn't priced here.
         </p>
         <ExposureSection exposure={exposure} />
         <p className="recon-footnote">{exposureScope}</p>
