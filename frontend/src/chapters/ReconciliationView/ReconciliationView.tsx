@@ -242,18 +242,18 @@ export function ReconciliationView({ summary, rootCauses, trueFill, exposure, ex
       {/* Move 1 */}
       <section className="recon-section" aria-labelledby="move1-title">
         <h2 className="recon-section__title" id="move1-title">Dual-Dock Reconciliation</h2>
-        <p className="recon-section__framing">
+        <p className="recon-section__framing ll-measure">
           Cinderhaven measures fill rate at the shipping dock. Walmart measures OTIF at their receiving dock.
           The {formatPts(summary.gap_pts)} gap is real — but invisible to systems that only watch one dock.
         </p>
         <DualDockChart summary={summary} />
-        <p className="recon-footnote">Source: Cinderhaven fct_retailer_shipments; synthetic Walmart OTIF scorecard. Window: {summary.window_start} – {summary.window_end}.</p>
+        <p className="recon-footnote ll-measure">Source: Cinderhaven fct_retailer_shipments; synthetic Walmart OTIF scorecard. Window: {summary.window_start} – {summary.window_end}.</p>
       </section>
 
       {/* Move 2 */}
       <section className="recon-section" aria-labelledby="move2-title">
         <h2 className="recon-section__title" id="move2-title">Gap Decomposition</h2>
-        <p className="recon-section__framing">
+        <p className="recon-section__framing ll-measure">
           The {formatPts(summary.gap_pts)} gap splits {formatPts(summary.ontime_gap_pts)} on-time failures and {formatPts(summary.infull_gap_pts)} in-full failures.
           Fixing the wrong one leaves at least {formatPts(Math.min(summary.ontime_gap_pts, summary.infull_gap_pts))} on the table.
         </p>
@@ -263,7 +263,7 @@ export function ReconciliationView({ summary, rootCauses, trueFill, exposure, ex
       {/* Move 3 */}
       <section className="recon-section" aria-labelledby="move3-title">
         <h2 className="recon-section__title" id="move3-title">Root Cause Attribution</h2>
-        <p className="recon-section__framing">
+        <p className="recon-section__framing ll-measure">
           Four root causes, two failure modes. Click any bar to pin the detail.
         </p>
         <RootCauseSection rootCauses={rootCauses} />
@@ -272,7 +272,7 @@ export function ReconciliationView({ summary, rootCauses, trueFill, exposure, ex
       {/* Move 4 */}
       <section className="recon-section" aria-labelledby="move4-title">
         <h2 className="recon-section__title" id="move4-title">True Fill Rate</h2>
-        <p className="recon-section__framing">
+        <p className="recon-section__framing ll-measure">
           We compared what the brand shipped against what Walmart's dock received. They differ by just
           {' '}{formatPts(trueFill.trimming_gap_pts)} — almost nothing goes missing between the two docks.
           The OTIF gap is genuine short-shipping, not receiving loss.
@@ -283,12 +283,12 @@ export function ReconciliationView({ summary, rootCauses, trueFill, exposure, ex
       {/* Move 5 */}
       <section className="recon-section" aria-labelledby="move5-title">
         <h2 className="recon-section__title" id="move5-title">Financial Exposure</h2>
-        <p className="recon-section__framing">
+        <p className="recon-section__framing ll-measure">
           The fines are small and measured ({formatDollars(exposure.annual_fines)}/yr); the velocity damage ({formatDollars(exposure.annual_velocity_damage)}/yr) is modeled, not measured.
           Neither is the real cost — that's the deauthorization risk a {formatPts(summary.gap_pts)} scorecard gap invites, and it isn't priced here.
         </p>
         <ExposureSection exposure={exposure} />
-        <p className="recon-footnote">{exposureScope}</p>
+        <p className="recon-footnote ll-measure">{exposureScope}</p>
       </section>
 
     </div>

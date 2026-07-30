@@ -115,7 +115,7 @@
   line-height: 1.5;
   border-left: 3px solid var(--color-gridline);
   padding-left: 16px;
-  max-width: 580px;
+  /* Width set by the .ll-measure-narrow frame class (560px) in JSX. */
 }
 
 @media (max-width: 640px) {

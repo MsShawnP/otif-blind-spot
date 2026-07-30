@@ -26,7 +26,7 @@
   font-size: 17px;
   color: var(--color-text-secondary);
   line-height: 1.6;
-  max-width: 660px;
+  /* Width set by the .ll-measure frame class (720px body measure) in JSX. */
 }
 
 .recon-chart {
@@ -40,7 +40,7 @@
   color: var(--color-text-secondary);
   border-top: 1px solid var(--color-gridline);
   padding-top: 8px;
-  max-width: 720px;
+  /* Width set by the .ll-measure frame class (720px body measure) in JSX. */
 }
 
 /* ─── Move 2: Decomposition bar ────────────────────────────────────────────── */
