@@ -217,7 +217,7 @@
   gap: 8px;
   padding: 24px;
   background: #ffffff;
-  border-left: 4px solid #158f75;
+  border-left: 4px solid var(--color-hk-35);
   border-radius: var(--border-radius);
   min-width: 160px;
   flex: 1;
@@ -241,19 +241,19 @@
 }
 
 .kpi-tile--accent {
-  border-left-color: #1f2e7a;
+  border-left-color: var(--color-navy);
 }
 
 .kpi-tile--delta {
-  border-left-color: #ee8a2a;
+  border-left-color: var(--color-sg-55);
 }
 
 .kpi-tile--velocity {
-  border-left-color: #ee8a2a;
+  border-left-color: var(--color-sg-55);
 }
 
 .kpi-tile--total {
-  border-left-color: #cc100a;
+  border-left-color: var(--color-red);
 }
 
 /* ─── Source badges (measured vs modeled) ───────────────────────────────────── */
@@ -273,13 +273,13 @@
 }
 
 .source-badge--platform {
-  background: #e4f5f0;
-  color: #158f75;
+  background: var(--color-hk-95);
+  color: var(--color-hk-35);
 }
 
 .source-badge--modeled {
-  background: #fdeee0;
-  color: #a05a1a;
+  background: var(--color-sg-95);
+  color: #a05a1a; /* one-off modeled-badge text; no exact token equivalent */
 }
 
 @media (max-width: 640px) {

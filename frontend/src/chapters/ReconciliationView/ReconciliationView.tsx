@@ -22,6 +22,9 @@ interface ReconciliationViewProps {
 // ─── Move 1: Dual-dock comparison ────────────────────────────────────────────
 
 function DualDockChart({ summary }: { summary: Summary }) {
+  // Literal hex required — Observable Plot writes these to SVG fill attributes,
+  // which cannot read CSS custom properties. Values mirror tokens.css:
+  // #158f75 = --color-hk-35, #cc100a = --color-red.
   const data = [
     { label: 'Cinderhaven internal fill', value: summary.internal_fill_rate, color: '#158f75' },
     { label: "Walmart's OTIF score",      value: summary.retailer_otif,       color: '#cc100a' },
