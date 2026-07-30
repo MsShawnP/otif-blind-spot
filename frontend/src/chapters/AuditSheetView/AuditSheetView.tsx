@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import type { AuditRow } from '../../types'
 import { formatDollars } from '../../utils/format'
 import './AuditSheetView.css'
@@ -75,6 +75,13 @@ export function AuditSheetView({ rows }: AuditSheetViewProps) {
   const [sortKey, setSortKey] = useState<keyof AuditRow | null>(null)
   const [sortDir, setSortDir] = useState<SortDir>('asc')
   const [page, setPage] = useState(0)
+
+  // Reset to the first page whenever the row set changes (e.g. a window-preset
+  // switch upstream). Without this, a stale page index can point past the end
+  // of the new, smaller result set and render a false "no matches" empty state.
+  useEffect(() => {
+    setPage(0)
+  }, [rows])
 
   const filtered = useMemo(() => {
     switch (filterMode) {
