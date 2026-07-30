@@ -66,13 +66,13 @@ PROJECT_ROOT = os.path.dirname(SCRIPTS_DIR)
 CACHE_DIR = os.path.join(SCRIPTS_DIR, "cache")
 DATA_OUT_DIR = os.path.join(PROJECT_ROOT, "frontend", "src", "data")
 
-# DB connection — mirrors Cinderhaven platform pattern
-_database_url = os.environ.get("DATABASE_URL")
-if not _database_url:
-    _pg_password = os.environ.get("POSTGRES_PASSWORD")
-    if not _pg_password:
-        raise EnvironmentError(
-            "Set DATABASE_URL or POSTGRES_PASSWORD in .env before running the pipeline."
-        )
-    _database_url = f"postgresql://postgres:REDACTED@localhost:5432/cinderhaven"
-DATABASE_URL = _database_url
+# DB connection — set DATABASE_URL in .env (see .env.example).
+# We require the full URL rather than assembling one from POSTGRES_PASSWORD:
+# interpolating the password into a connection string inline would reintroduce
+# the credential pattern the gitleaks rule forbids, and would duplicate
+# connection config that .env already owns.
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if not DATABASE_URL:
+    raise EnvironmentError(
+        "Set DATABASE_URL in .env before running the pipeline (see .env.example)."
+    )
