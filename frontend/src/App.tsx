@@ -56,6 +56,12 @@ function HeadlineHook({ summary }: { summary: Summary }) {
         <p className="headline-hook__gap" id="headline-title">
           {formatPts(summary.gap_pts)} gap. Same shipments. Different docks. Different baselines.
         </p>
+        <p className="headline-hook__gap headline-hook__gap--exposure">
+          ${Math.round(fullExposure.total_exposure / 1000)}K a year in exposure — $
+          {Math.round(fullExposure.annual_fines / 1000)}K in measured fines + $
+          {Math.round(fullExposure.annual_velocity_damage / 1000)}K in modeled velocity
+          damage · {CORPUS_START} to {CORPUS_END}
+        </p>
       </div>
     </section>
   )
