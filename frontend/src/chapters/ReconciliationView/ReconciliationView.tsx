@@ -273,9 +273,9 @@ export function ReconciliationView({ summary, rootCauses, trueFill, exposure, ex
       <section className="recon-section" aria-labelledby="move4-title">
         <h2 className="recon-section__title" id="move4-title">True Fill Rate</h2>
         <p className="recon-section__framing">
-          We compared what the brand shipped against what Walmart's dock received. They agree within a
-          tenth of a point — almost nothing goes missing between the two docks. The OTIF gap is genuine
-          short-shipping, not receiving loss.
+          We compared what the brand shipped against what Walmart's dock received. They differ by just
+          {' '}{formatPts(trueFill.trimming_gap_pts)} — almost nothing goes missing between the two docks.
+          The OTIF gap is genuine short-shipping, not receiving loss.
         </p>
         <TrueFillSection trueFill={trueFill} />
       </section>
