@@ -198,9 +198,7 @@ function TrueFillSection({ trueFill }: { trueFill: TrueFill }) {
       </div>
       <div className="kpi-tile kpi-tile--delta">
         <span className="kpi-tile__value">{formatPts(comp.delta_value)}</span>
-        <span className="kpi-tile__label">
-          added by <strong>order trimming</strong> before acknowledgment
-        </span>
+        <span className="kpi-tile__label">{comp.delta_label}</span>
       </div>
     </div>
   )
@@ -272,9 +270,9 @@ export function ReconciliationView({ summary, rootCauses, trueFill, exposure, ex
       <section className="recon-section" aria-labelledby="move4-title">
         <h2 className="recon-section__title" id="move4-title">True Fill Rate</h2>
         <p className="recon-section__framing">
-          Walmart trims POs via EDI 855 acknowledgment, so we checked whether filling against the acknowledged quantity
-          inflates the reported number. It barely does — the gap against original demand is under a tenth of a point.
-          The real OTIF gap is short-shipping, not an accounting artifact.
+          We compared what the brand shipped against what Walmart's dock received. They agree within a
+          tenth of a point — almost nothing goes missing between the two docks. The OTIF gap is genuine
+          short-shipping, not receiving loss.
         </p>
         <TrueFillSection trueFill={trueFill} />
       </section>

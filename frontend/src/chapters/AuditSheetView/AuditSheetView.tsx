@@ -36,8 +36,8 @@ const COLUMNS: Column[] = [
   { key: 'on_time_result',      label: 'On-time?',      sortable: true,  render: (r) => <ResultChip pass={r.on_time_result} /> },
   { key: 'on_time_root_cause',  label: 'Root cause',    sortable: false, render: (r) => r.on_time_root_cause ?? '—' },
   { key: 'po_units',            label: 'PO units',      sortable: true,  render: (r) => r.po_units.toLocaleString() },
-  { key: 'acknowledged_units',  label: 'Acknowledged',  sortable: true,  render: (r) => r.acknowledged_units.toLocaleString() },
-  { key: 'shipped_units',       label: 'Shipped',       sortable: true,  render: (r) => r.shipped_units.toLocaleString() },
+  { key: 'acknowledged_units',  label: 'Shipped',       sortable: true,  render: (r) => r.acknowledged_units.toLocaleString() },
+  { key: 'shipped_units',       label: 'Received',      sortable: true,  render: (r) => r.shipped_units.toLocaleString() },
   { key: 'in_full_result',      label: 'In-full?',      sortable: true,  render: (r) => <ResultChip pass={r.in_full_result} /> },
   { key: 'in_full_root_cause',  label: 'Root cause',    sortable: false, render: (r) => r.in_full_root_cause ?? '—' },
 ]

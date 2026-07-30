@@ -103,9 +103,9 @@ describe('Move 4: true fill reveal', () => {
     expect(screen.getByText('91%')).toBeInTheDocument()
   })
 
-  it('delta is labeled with order trimming', () => {
+  it('delta is labeled as loss between the two docks', () => {
     renderView()
-    expect(screen.getByText(/order trimming/)).toBeInTheDocument()
+    expect(screen.getByText(/lost between the two docks/)).toBeInTheDocument()
   })
 })
 

@@ -86,9 +86,9 @@ describe('deriveTrueFillComparison', () => {
     expect(comp.delta_value).toBe(4.0)
   })
 
-  it('delta_label mentions order trimming', () => {
+  it('delta_label describes loss between the two docks', () => {
     const comp = deriveTrueFillComparison(mockTrueFill)
-    expect(comp.delta_label.toLowerCase()).toContain('order trimming')
+    expect(comp.delta_label.toLowerCase()).toContain('between the two docks')
   })
 })
 

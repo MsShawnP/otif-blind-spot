@@ -57,12 +57,17 @@ export function deriveRootCauseBars(rootCauses: RootCause[]): RootCauseBar[] {
 }
 
 export function deriveTrueFillComparison(trueFill: TrueFill): TrueFillComparison {
+  // fill_vs_855 = units shipped ÷ ordered (shipping-dock fill);
+  // fill_vs_850 = units received ÷ ordered (receiving-dock fill);
+  // the delta is what went missing between the two docks. The 855/850 field
+  // names are legacy — the data carries shipped/received/ordered, not an EDI
+  // acknowledgment layer.
   return {
-    fill_855_label: 'Fill rate vs. acknowledged orders (855)',
+    fill_855_label: 'Fill at the shipping dock — shipped ÷ ordered',
     fill_855_value: trueFill.fill_vs_855,
-    fill_850_label: 'True fill rate vs. original POs (850)',
+    fill_850_label: 'Fill at the receiving dock — received ÷ ordered',
     fill_850_value: trueFill.fill_vs_850,
-    delta_label: 'Added by order trimming before acknowledgment',
+    delta_label: 'lost between the two docks',
     delta_value: trueFill.trimming_gap_pts,
   }
 }

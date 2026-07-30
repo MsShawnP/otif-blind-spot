@@ -54,7 +54,7 @@ describe('AuditSheetView — table structure', () => {
     const expectedHeaders = [
       'PO #', 'Ship date', 'MABD', 'Delivery date',
       'On-time?', 'Root cause',
-      'PO units', 'Acknowledged', 'Shipped',
+      'PO units', 'Shipped', 'Received',
       'In-full?', 'Root cause',
     ]
     expectedHeaders.forEach((label) => {
