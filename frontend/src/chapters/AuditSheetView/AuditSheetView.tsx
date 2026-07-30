@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
 import type { AuditRow } from '../../types'
-import { formatDollars } from '../../utils/format'
 import './AuditSheetView.css'
 
 type FilterMode = 'all' | 'on_time_fail' | 'in_full_fail' | 'both_fail' | 'clean'
@@ -41,7 +40,6 @@ const COLUMNS: Column[] = [
   { key: 'shipped_units',       label: 'Shipped',       sortable: true,  render: (r) => r.shipped_units.toLocaleString() },
   { key: 'in_full_result',      label: 'In-full?',      sortable: true,  render: (r) => <ResultChip pass={r.in_full_result} /> },
   { key: 'in_full_root_cause',  label: 'Root cause',    sortable: false, render: (r) => r.in_full_root_cause ?? '—' },
-  { key: 'otif_fine',           label: 'OTIF fine',     sortable: true,  render: (r) => r.otif_fine > 0 ? formatDollars(r.otif_fine) : '—' },
 ]
 
 function ResultChip({ pass }: { pass: boolean }) {

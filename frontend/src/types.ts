@@ -62,8 +62,6 @@ export interface AuditRow {
   shipped_units: number
   in_full_result: boolean
   in_full_root_cause: string | null
-  otif_fine: number
-  retailer_penalty_flag: boolean
 }
 
 export interface PortfolioShipment {

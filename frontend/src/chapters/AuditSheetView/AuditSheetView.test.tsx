@@ -18,8 +18,6 @@ function makeRow(overrides: Partial<AuditRow> = {}): AuditRow {
     shipped_units: 120,
     in_full_result: true,
     in_full_root_cause: null,
-    otif_fine: 0,
-    retailer_penalty_flag: false,
     ...overrides,
   }
 }
@@ -37,8 +35,6 @@ const shortRow = makeRow({
   in_full_result: false,
   in_full_root_cause: 'production_short_ship',
   shipped_units: 96,
-  otif_fine: 120,
-  retailer_penalty_flag: true,
 })
 const bothRow = makeRow({
   shipment_id: 'RS-both-001',
@@ -48,21 +44,18 @@ const bothRow = makeRow({
   in_full_result: false,
   in_full_root_cause: 'order_trimming',
   shipped_units: 80,
-  otif_fine: 200,
-  retailer_penalty_flag: true,
 })
 
 const ALL_ROWS = [cleanRow, lateRow, shortRow, bothRow]
 
 describe('AuditSheetView — table structure', () => {
-  it('renders all 12 column headers', () => {
+  it('renders all 11 column headers', () => {
     render(<AuditSheetView rows={ALL_ROWS} />)
     const expectedHeaders = [
       'PO #', 'Ship date', 'MABD', 'Delivery date',
       'On-time?', 'Root cause',
       'PO units', 'Acknowledged', 'Shipped',
       'In-full?', 'Root cause',
-      'OTIF fine',
     ]
     expectedHeaders.forEach((label) => {
       expect(screen.getAllByText(new RegExp(label, 'i')).length).toBeGreaterThanOrEqual(1)
@@ -147,14 +140,5 @@ describe('AuditSheetView — sorting', () => {
     const firstCell = within(tbody).queryAllByRole('row')[0].querySelectorAll('td')[0]
     // PO numbers are PO-WMT-000001 through 000004 — ascending should give 000001
     expect(firstCell.textContent).toBe('PO-WMT-000001')
-  })
-})
-
-describe('AuditSheetView — OTIF fine display', () => {
-  it('shows — for zero fine and formatted amount for non-zero', () => {
-    render(<AuditSheetView rows={ALL_ROWS} />)
-    // cleanRow has fine=0 → "—"
-    // shortRow has fine=120 → "$120"
-    expect(screen.getByText('$120')).toBeInTheDocument()
   })
 })

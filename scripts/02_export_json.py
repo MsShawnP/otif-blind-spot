@@ -337,8 +337,6 @@ def build_audit_rows(shipments: list[dict]) -> list[dict]:
             "shipped_units": s["units_received"],
             "in_full_result": s["retailer_in_full"],
             "in_full_root_cause": s.get("in_full_root_cause"),
-            "otif_fine": 0.0,
-            "retailer_penalty_flag": not s["retailer_otif"],
         })
 
     return rows
