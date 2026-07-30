@@ -19,7 +19,7 @@ import {
   computeTrueFill,
   computeExposure,
 } from './computeMetrics'
-import type { Summary } from './types'
+import type { Summary, Exposure } from './types'
 import { ChapterNav } from './components/ChapterNav'
 import { ReconciliationView } from './chapters/ReconciliationView/ReconciliationView'
 import { AuditSheetView } from './chapters/AuditSheetView/AuditSheetView'
@@ -29,7 +29,7 @@ import './App.css'
 const CORPUS_START = fullSummary.window_start
 const CORPUS_END = fullSummary.window_end
 
-function HeadlineHook({ summary }: { summary: Summary }) {
+function HeadlineHook({ summary, exposure }: { summary: Summary; exposure: Exposure }) {
   return (
     <section className="headline-hook" aria-labelledby="headline-title">
       <div className="headline-hook__inner">
@@ -57,10 +57,10 @@ function HeadlineHook({ summary }: { summary: Summary }) {
           {formatPts(summary.gap_pts)} gap. Same shipments. Different docks. Different baselines.
         </p>
         <p className="headline-hook__gap headline-hook__gap--exposure">
-          ${Math.round(fullExposure.total_exposure / 1000)}K a year in exposure — $
-          {Math.round(fullExposure.annual_fines / 1000)}K in measured fines + $
-          {Math.round(fullExposure.annual_velocity_damage / 1000)}K in modeled velocity
-          damage · {CORPUS_START} to {CORPUS_END}
+          ${Math.round(exposure.total_exposure / 1000)}K a year in exposure — $
+          {Math.round(exposure.annual_fines / 1000)}K in measured fines + $
+          {Math.round(exposure.annual_velocity_damage / 1000)}K in modeled velocity
+          damage · {summary.window_start} to {summary.window_end}
         </p>
       </div>
     </section>
@@ -130,7 +130,7 @@ function App() {
         <span className="brand-subtitle">Cinderhaven</span>
       </header>
 
-      <HeadlineHook summary={computed.summary} />
+      <HeadlineHook summary={computed.summary} exposure={computed.exposure} />
 
       <WindowPresetBar activeKey={presetKey} onChange={setPresetKey} />
 
