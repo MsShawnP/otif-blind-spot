@@ -112,5 +112,5 @@ deferred to a polish phase.
   - Tests: added computeMetrics.test.ts — Python/TS parity suite + edge/empty-window + exposure-math value assertions (63 frontend tests, was 50).
   - Docs: README stack (Observable Plot not D3; Workers not Pages; correct table names); CLAUDE.md TBDs filled; 84.5%/14.8pt figure alignment.
 - **Verified:** tsc clean, 63 frontend + 29 python tests pass, build clean, security clean. Windowing consistency + Move 4 relabel confirmed live across 52w/13w presets.
-- **Deferred:** lailara-frame `.ll-measure` prose-measure adoption — needs visual verification (Browser pane not displayable this session). JSON runtime validation in data.ts — intentionally skipped; the new parity test is a stronger build-time guard.
+- **Deferred:** ~~lailara-frame `.ll-measure` prose-measure adoption~~ — **done 2026-07-30** (`8a87996`, deployed; verified via computed geometry). JSON runtime validation in data.ts — intentionally skipped; the new parity test is a stronger build-time guard.
 - **Next review:** 2026-08-27 (active project, ~4-week cadence)

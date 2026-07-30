@@ -156,3 +156,15 @@ about synthetic Walmart scorecard data remains open).
 **Next:** Deferred — adopt lailara-frame .ll-measure prose classes so the page abides by the brand frame (needs Browser pane displayed for visual sign-off at 1440px + 375px; task chip task_3b7ad9a1). Intentionally skipped: JSON runtime validation in data.ts (parity test is the stronger guard). Housekeeping: next pipeline regen strips the orphaned otif_fine/retailer_penalty_flag keys from audit_rows.json.
 
 ---
+
+## 2026-07-30 — lailara-frame prose-measure adoption (deployed)
+
+**Started from:** Sole deferred item from the triple-review pass — adopt the `lailara-frame.css` `.ll-measure` prose classes so the page abides by the brand frame. Deferred because the Browser pane couldn't composite screenshots for visual sign-off. origin/main at `d1ae53c`.
+
+**Did:** Applied frame measure classes to the three running-prose surfaces — `.recon-section__framing` + `.recon-footnote` → `ll-measure` (720px), both `.headline-hook__gap` → `ll-measure-narrow` (560px). Removed the hardcoded `max-width` from each element's component CSS (frame stylesheet loads first, so the component rule was winning the cascade and would have no-op'd the utility class — the conflict the task flagged). Rebased onto an advanced origin/main (+2 commits); one Move 4 conflict resolved by keeping main's floated-figure text plus `ll-measure`. Pushed to main (`8a87996`), Cloudflare deploy green, fast-forwarded the root main worktree.
+
+**State:** Live and clean. `main` = `8a87996`. Build clean, 63 frontend tests pass, no console errors. Verified via computed geometry (screenshots still can't composite this session): measures resolve to 560/720px at 1440px, no horizontal overflow at 375px. Sibling surfaces: all 3 running-prose types checked and converted; non-prose chart labels/captions deliberately excluded as out of scope.
+
+**Next:** No code work pending. Housekeeping carried forward: next pipeline regen strips orphaned `otif_fine`/`retailer_penalty_flag` keys from `audit_rows.json`. Next `/improve` due 2026-08-27.
+
+---

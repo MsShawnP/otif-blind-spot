@@ -111,6 +111,11 @@ Each entry:
 - **Scope:** Move 4 tiles/prose, EDI Audit Sheet Shipped/Received columns, and any doc naming the fourth root cause. The `trimming_gap_pts` / `fill_vs_855` / `fill_vs_850` / `acknowledged_units` field NAMES are legacy — do not read EDI semantics into them.
 - **Do not:** Reintroduce "order trimming" or "EDI 855 acknowledgment" language in Move 4, and do not list "order trimming" as a root cause — the four causes are `warehouse_late`, `carrier_late`, `short_ship`, `receiving_discrepancy`.
 
+### 2026-07-30 — Running prose uses lailara-frame `.ll-measure` classes, not per-block hardcoded max-widths
+- **Why:** `lailara-frame.css` defines the brand's canonical prose measures (`--ll-body-max-width` 720px, `--ll-body-max-width-narrow` 560px) and the `.ll-measure` / `.ll-measure-narrow` utility classes. Body prose reads at the 720px measure *inside* the 900px `.reconciliation-view` container — the container width is for charts/tables, not line length. Hardcoding a per-block `max-width` (660px on framing, 580px on the hero gap, etc.) drifts from the frame and re-triggers the "unused frame classes" standards flag. Cascade note: `lailara-frame.css` is imported before the component CSS in `main.tsx`, so a component `max-width` on the same element wins source-order and silently no-ops the utility class — apply the class in JSX **and** delete the component `max-width`.
+- **Scope:** All running-prose blocks — `.recon-section__framing`, `.recon-footnote` (`ll-measure`), and `.headline-hook__gap` (`ll-measure-narrow`). Non-prose chart labels, KPI captions, and pin-card text are excluded — they are labels/captions, not running text.
+- **Do not:** Re-add a hardcoded `max-width` to a prose element's component CSS, and do not hand-pick prose widths in `ch`/`rem` (the frame comment explains why both mislead). Use the frame measure classes.
+
 ---
 
 ## Reversed / Superseded
