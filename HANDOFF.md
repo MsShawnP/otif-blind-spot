@@ -137,3 +137,22 @@ about synthetic Walmart scorecard data remains open).
 **Next:** No code work pending. Deferred: (1) CINDERHAVEN_CANONICAL.md update batched with short-ship-cost, (2) README narrative prose awaiting Shawn's replacement text, (3) .env revert to prod is separate deliberate step. Project due for `/improve` review (last was 2026-05-31, next due 2026-06-30).
 
 ---
+
+## 2026-07-30 — Triple-review improvement pass (16 commits, deployed)
+
+**Started from:** Post-ship, live at otif.lailarallc.com. User ran /improve + /ce code review + /ui review. Another session's lailara-frame.css change was in flight — committed as a13d1a6 and pushed at session start.
+
+**Did:** Ran all three reviews (security, correctness, maintainability, testing, kieran-typescript, project-standards + ui-review-skill). Resolved every substantive finding in 16 verified commits, pushed and auto-deployed:
+- Windowing consistency: floated headline exposure, Move 4 delta, and Move 5 prose with the selected preset (were hardcoded full-corpus while tiles were windowed — two exposure totals on one screen).
+- Pagination: reset audit-sheet page index on rows-prop change (stale page → false "no matches").
+- Honesty: relabeled Move 4 "True Fill" from EDI-855 order-trimming to shipping-dock vs receiving-dock fill. The pipeline remaps units_shipped→acknowledged_units, units_received→shipped_units, so the delta is loss between docks, not trimming (data has no ack layer). Fixed audit column headers (Shipped/Received) and CLAUDE.md root-cause list.
+- Dead code: otif_fine, retailer_penalty_flag, PlotChart.svgTitle, data-decomp-total, magic-9 decomposition fallback, dead DATABASE_URL/REDACTED branch, duplicate .env loader.
+- Quality: RootCauseKey union type; tokens.css hex→var in ReconciliationView.css.
+- Tests: computeMetrics.test.ts — Python↔TS parity suite + edge/empty-window + exposure-math value assertions (63 frontend tests, was 50).
+- Docs: README stack (Observable Plot/Workers/correct tables), CLAUDE.md TBDs, 84.5%/14.8pt figure alignment.
+
+**State:** Live and clean. tsc + 63 frontend/29 python tests + build all green, security clean. Windowing consistency + Move 4 relabel verified on the live bundle across 52w/13w presets. origin/main = d1ae53c.
+
+**Next:** Deferred — adopt lailara-frame .ll-measure prose classes so the page abides by the brand frame (needs Browser pane displayed for visual sign-off at 1440px + 375px; task chip task_3b7ad9a1). Intentionally skipped: JSON runtime validation in data.ts (parity test is the stronger guard). Housekeeping: next pipeline regen strips the orphaned otif_fine/retailer_penalty_flag keys from audit_rows.json.
+
+---

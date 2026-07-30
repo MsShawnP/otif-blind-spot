@@ -108,3 +108,17 @@ shouldn't re-attempt dead ends because the lesson got lost.
 **Status:** Resolved
 
 **Tags:** windows, encoding, unicode, cp1252, print, pipeline
+
+---
+
+### 2026-07-30 — Interpolating the DB password inline tripped the gitleaks pre-commit hook
+
+**Attempted:** Fixed the dead DATABASE_URL fallback in `otif_config.py` by interpolating the real password variable into the psycopg2 connection URL the module builds.
+
+**Why it didn't work:** The gitleaks pre-commit rule `postgres-url-with-password` matches any Postgres connection URL carrying an inline password, regardless of whether the secret is a literal or a variable interpolation, so it blocked the commit. A second attempt failed the same way because the *explanatory comment* I added spelled the URL-with-password shape out in prose.
+
+**What we tried instead:** Removed the POSTGRES_PASSWORD→build-URL fallback entirely and required the full `DATABASE_URL` (already the documented `.env.example` mechanism), raising a clear error when unset. Reworded the comment to describe the pattern without writing it out.
+
+**Status:** Resolved
+
+**Tags:** gitleaks, pre-commit, postgres, connection-string, database-url, false-positive, secret-scanning

@@ -24,6 +24,11 @@ Each entry:
 - **Scope:** All Lailara portfolio pieces deriving synthetic data from Cinderhaven
 - **Do not:** Add portfolio-specific dbt models to `active datasources/cinderhaven-data-platform/`. Use standalone psycopg2 scripts querying existing marts and exporting JSON.
 
+### 2026-07-30 — Require the full DATABASE_URL; never assemble a connection string inline from POSTGRES_PASSWORD
+- **Why:** The gitleaks pre-commit rule (`postgres-url-with-password`) blocks any Postgres connection URL that carries an inline password — literal OR variable-interpolated, and even when the shape appears inside a comment. Building the URL inline from a password both trips that rule and duplicates connection config that `.env` already owns. `.env.example` documents `DATABASE_URL` as the mechanism, and `00_query_cinderhaven.py` reads it directly.
+- **Scope:** `scripts/otif_config.py` and any pipeline DB-connection code.
+- **Do not:** Interpolate `POSTGRES_PASSWORD` into a connection string in Python source, and do not spell that URL-with-inline-password shape out in a comment either (gitleaks flags the comment too). Require `DATABASE_URL` and raise `EnvironmentError` when it is unset.
+
 ### 2026-05-31 — Use Vite-import baked JSON over runtime fetch for portfolio data
 - **Why:** JSON imported at build time (`src/data/`) eliminates loading states, useEffect data fetching, and race conditions. `where-the-money-comes-from` established this as the newer, cleaner pattern. Runtime fetch (`public/data/`) is the older pattern from `retailer-deduction-recovery` and requires loading state handling. The `prebuild` script ensures data is always fresh before bundling.
 - **Scope:** All new Lailara portfolio pieces that use static data; applies to this project's five JSON data files
@@ -95,6 +100,16 @@ Each entry:
 - **Why:** Date-range preset buttons (13w/26w/52w/full) require all figures to recompute for the selected window. Rather than re-running the Python pipeline, `computeMetrics.ts` mirrors the pipeline's summary/root-cause/true-fill/exposure logic in TypeScript, operating on per-shipment and per-chargeback data exported as JSON. The "full corpus" preset short-circuits to precomputed static data to avoid rounding drift between Python and JS.
 - **Scope:** `computeMetrics.ts`, `App.tsx`, `data.ts`, `types.ts`, `02_export_json.py` (new exports)
 - **Do not:** Add a server-side API for window filtering — this is a static portfolio piece. Do not remove the "full corpus" shortcut — it ensures the full-window figures match the Python pipeline exactly.
+
+### 2026-07-30 — Every displayed figure derives from the selected window's props; no hardcoded metrics in components
+- **Why:** The date-range presets (13w/26w/52w/all) recompute all metrics client-side. Any figure hardcoded in a component or its prose contradicts the windowed tiles on non-default presets — which shipped live in the headline exposure and the Move 4/Move 5 framing prose until the 2026-07-30 pass floated them.
+- **Scope:** `App.tsx` headline, all `ReconciliationView` framing prose, and every exposure/gap/true-fill display.
+- **Do not:** Write a metric value (dollar total, gap points, delta) as a literal in a component or its prose. Derive it from the `summary`/`exposure`/`trueFill` props via the `format*` helpers so it floats with the window.
+
+### 2026-07-30 — Move 4 "True Fill" measures shipping-dock vs receiving-dock fill, not EDI-855 order trimming
+- **Why:** `02_export_json.py` build_audit_rows remaps `units_shipped→acknowledged_units` and `units_received→shipped_units`, so `computeTrueFill`'s `fill_vs_855` = shipped/ordered (brand shipping-dock fill), `fill_vs_850` = received/ordered (retailer receiving-dock fill), and the delta = shipped − received = units lost between the two docks. The data has no 850/855 acknowledgment layer (acknowledged == po). The original "Walmart trims POs via EDI 855 / order trimming" framing described a mechanism the data does not contain — a supply-chain-literate reader would catch it.
+- **Scope:** Move 4 tiles/prose, EDI Audit Sheet Shipped/Received columns, and any doc naming the fourth root cause. The `trimming_gap_pts` / `fill_vs_855` / `fill_vs_850` / `acknowledged_units` field NAMES are legacy — do not read EDI semantics into them.
+- **Do not:** Reintroduce "order trimming" or "EDI 855 acknowledgment" language in Move 4, and do not list "order trimming" as a root cause — the four causes are `warehouse_late`, `carrier_late`, `short_ship`, `receiving_discrepancy`.
 
 ---
 
