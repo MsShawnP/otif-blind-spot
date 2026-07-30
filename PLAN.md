@@ -100,3 +100,17 @@ deferred to a polish phase.
   - npm audit: 0 vulnerabilities confirmed
 - **Deferred:** None — all findings resolved
 - **Next review:** 2026-06-30
+
+### 2026-07-30 — Improvement pass (/improve + /ce code review + /ui review)
+- **Trigger:** User-initiated triple review (whole-project audit, code review, UI review)
+- **What was reviewed:** Full codebase + docs. Automated reviewers: security-sentinel, correctness, maintainability, testing, kieran-typescript, project-standards. UI review (ui-review-skill) against live site. Manual audit of workflow files, deps, build, git hygiene.
+- **What was fixed (14 commits):**
+  - Behavior: floated headline exposure + Move-5 prose with the window (were pinned full-corpus while tiles were windowed — two exposure totals on one screen); reset audit-sheet pagination on window change (stale page → false "no matches").
+  - Honesty: relabeled Move 4 "True Fill" — tiles/prose described EDI-855 order trimming, but the data has no acknowledgment layer (pipeline remaps units_shipped→acknowledged_units, units_received→shipped_units), so it's shipping-dock vs receiving-dock fill; delta is loss between docks. Fixed audit-sheet column headers to match.
+  - Dead code: removed otif_fine (always 0) and retailer_penalty_flag (redundant); PlotChart.svgTitle; data-decomp-total; magic-9 decomposition fallback; dead DATABASE_URL/REDACTED branch; duplicate .env loader.
+  - Quality: RootCauseKey union type (was bare string); tokens.css hex → var in ReconciliationView.css.
+  - Tests: added computeMetrics.test.ts — Python/TS parity suite + edge/empty-window + exposure-math value assertions (63 frontend tests, was 50).
+  - Docs: README stack (Observable Plot not D3; Workers not Pages; correct table names); CLAUDE.md TBDs filled; 84.5%/14.8pt figure alignment.
+- **Verified:** tsc clean, 63 frontend + 29 python tests pass, build clean, security clean. Windowing consistency + Move 4 relabel confirmed live across 52w/13w presets.
+- **Deferred:** lailara-frame `.ll-measure` prose-measure adoption — needs visual verification (Browser pane not displayable this session). JSON runtime validation in data.ts — intentionally skipped; the new parity test is a stronger build-time guard.
+- **Next review:** 2026-08-27 (active project, ~4-week cadence)
