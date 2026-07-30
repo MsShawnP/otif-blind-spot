@@ -206,7 +206,7 @@ OTIF scorecards and fill performance expose the brand's operational weaknesses a
 - [x] ~~**Fold in #46 (EDI: True OTIF from EDI timestamps)?**~~ Resolved: Yes, absorbed into Moves 2–3. Deriving on-time performance independently from EDI 856 + carrier 214 timestamps is what makes this an independent Retailer Audit Engine rather than a scorecard mirror.
 - [x] ~~**Relationship to #148 (Real-time OTIF monitoring)?**~~ Resolved: Keep separate. This diagnostic is historical; continuous real-time monitoring is the retainer/upsell.
 - [x] ~~**Single retailer or multi-retailer at launch?**~~ Resolved: Walmart MVP (clearest rules, most famous program). Design the data models modularly so Target, Kroger, etc. plug in as extensions later.
-- [ ] **Real or synthetic scorecard data for Cinderhaven?** Synthetic Walmart OTIF scorecard, seeded to produce the 5/4 on-time/in-full split and the exposure figures described.
+- [ ] **Real or synthetic scorecard data for Cinderhaven?** Synthetic Walmart OTIF scorecard, seeded to produce the ~2/~13 on-time/in-full split and the exposure figures described.
 
 ---
 
