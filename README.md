@@ -19,6 +19,8 @@ Reconciles a brand's internal fulfillment metrics against retailer-scored OTIF (
 | Annual velocity damage (modeled) | $33,500 |
 | Total annual exposure | $57,197 |
 
+The hero defaults to the last-52-weeks view (~$59K exposure); the $57,197 figure is the full-corpus (2023–2025) total.
+
 The gap is almost entirely in-full (12.7 of 14.8 pts). On-time performance is strong. The blind spot is quantity shortfalls: a shipment that ships 99% of its units scores 99% on fill rate but 0% on OTIF.
 
 **Root causes (Walmart):**
@@ -33,8 +35,8 @@ Short-ships drive 72% of the gap. Receiving discrepancies — where the dock sca
 
 The tool distinguishes two cost types:
 
-- **Measured** ($24K/yr) — actual compliance fines from platform chargebacks (short_ship, late_delivery, receiving_discrepancy). Real dollars deducted from remittances.
-- **Modeled** ($34K/yr) — estimated shelf-velocity damage at $3.50 per unit of retailer shortfall. A rate assumption, not a platform-derived figure, and labeled accordingly in the tool.
+- **Measured** ($23.7K/yr) — actual compliance fines from platform chargebacks (short_ship, late_delivery, receiving_discrepancy). Real dollars deducted from remittances.
+- **Modeled** ($33.5K/yr) — estimated shelf-velocity damage at $3.50 per unit of retailer shortfall. A rate assumption, not a platform-derived figure, and labeled accordingly in the tool.
 
 ## Why it matters
 
