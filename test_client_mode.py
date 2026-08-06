@@ -78,6 +78,30 @@ def test_clean_run(tmp_path):
     assert "x12/36" in html or "×12/36" in html
 
 
+def test_window_and_annualization_track_config_not_hardcoded(tmp_path):
+    """The rendered window ('N months (label)') and the ×12/N annualization
+    divisor must come from basis.window_months / window_label, not a hardcoded
+    default. The clean-run test asserts only the demo's own '36 months' /
+    'x12/36' — a positive-only check a hardcoded '36' would also pass, the gap
+    that let trade-spend quote 26 weeks of data as 'trailing 52 weeks'.
+
+    Both halves: feed a distinctive window and assert it tracks (label + divisor
+    + numeric annualization), AND assert the demo default is absent."""
+    cfg = _cfg(tmp_path, _CONFIG.replace("window_months: 36", "window_months: 41")
+                                .replace("Jan 2023 - Dec 2025", "FY2024-FY2026"))
+    src = _write(tmp_path, "otif.csv", _CLEAN)
+    result = client_mode.run(cfg, src, str(tmp_path / "out"))
+    assert result["status"] == "ok"
+    s = json.load(open(result["summary_json"], encoding="utf-8"))
+    assert s["annual_fines"] == pytest.approx(400.0 * 12 / 41, abs=0.01)
+    html = open(result["report"], encoding="utf-8").read()
+    assert "41 months" in html and "FY2024-FY2026" in html
+    assert "x12/41" in html or "×12/41" in html
+    assert "36 months" not in html                       # demo default must not survive
+    assert "x12/36" not in html and "×12/36" not in html
+    assert "Jan 2023 - Dec 2025" not in html
+
+
 def test_boolean_variants_parse(tmp_path):
     body = (
         "shipment_id,ship_date,on_time_result,in_full_result,po_units,shipped_units\n"
