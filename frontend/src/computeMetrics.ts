@@ -20,7 +20,12 @@ export const WINDOW_PRESETS: WindowPreset[] = [
   { key: 'all', label: 'Full corpus', weeks: null },
 ]
 
-export const DEFAULT_PRESET_KEY = '52w'
+// Full corpus is the deployed default so the landing view shows the canonical
+// figures ($57,197 exposure, 14.8-pt gap over Jan 2023–Dec 2025), not a 52-week
+// subset that shows an off-canonical ~$59K. The window label prints beside every
+// number (headline exposure line + reconciliation footnote). Users can still
+// narrow to a shorter preset.
+export const DEFAULT_PRESET_KEY = 'all'
 
 export function presetToRange(
   preset: WindowPreset,

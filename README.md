@@ -81,6 +81,25 @@ Consumes the Cinderhaven Data Platform directly:
 
 This tool previously synthesized OTIF events and normalized outputs to match hardcoded targets (95% internal / 86% retailer-scored / $433K exposure). The normalization layer overrode what the data actually said. The rebuild stripped it, pointed the pipeline at platform causal fulfillment events, and let the data produce the scores. The gap turned out to be 14.8 points, not 10 — still a significant finding, and the honest one.
 
+## Client engagement use
+
+The demo renders the committed Cinderhaven dataset (full corpus by default). To
+analyze a **client's own OTIF scorecard** in place — validated, never committed,
+never deployed — use client mode (see [INPUT-SPEC.md](INPUT-SPEC.md)):
+
+```bash
+pip install -e ../engagement-template/lib      # the shared lailara_engagement scaffold
+python client_mode.py --config engagement.yml --input client-data/otif.csv \
+    --out client-output [--final]
+```
+
+It computes the internal-fill vs retailer-OTIF gap, the on-time/in-full failure
+split, and the fines exposure (annualized on the config window); velocity damage
+is disclosed as a modeled figure the scorecard can't produce. Output to
+`client-output/` (gitignored): a branded, provenance-footed, DRAFT-watermarked
+`otif-gap-summary.html` + `summary.json`, or a Data Readiness Report if a required
+column is missing. The demo app is never edited (golden-locked).
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
